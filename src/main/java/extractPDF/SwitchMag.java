@@ -1,0 +1,83 @@
+package extractPDF;
+
+import extractPDF.CSV.WriteCSV;
+import extractPDF.Magazines.*;
+
+
+import java.io.File;
+
+public class SwitchMag {
+
+    private static WriteCSV writeCSV;
+
+    public static void choose(File file,WriteCSV writeCSV) {
+        AllMagazines magazine=null;
+        String parentName = file.getParent();
+        int index = parentName.lastIndexOf("\\");
+        String mag="";
+                parentName= parentName.substring(index + 1);
+
+        mag = parentName.substring(0, parentName.length() - 4);
+//        System.out.println(mag);
+        switch (MagazineName.valueOf(mag)) {
+            case 财经论丛:
+//                System.out.println(mag);
+                magazine=new CollectedEssaysonFinanceandEconomics();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+//
+            case 财经问题研究://ok
+//                System.out.println(mag);
+                magazine = new ResearchonFinancialandEconomicIssues();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+            case 金融理论与实践://ok
+//                System.out.println(mag);
+                magazine=new FinanceTheoryAndPractice_Jinrong();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+            case 财经理论与实践://ok
+//                System.out.println(mag);
+                magazine=new FinanceTheortAndPractice_Caijing();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+            case 当代财经:
+//                System.out.println(mag);
+                magazine=new ContemporaryFinanceEconomics();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+            case 东北财经大学学报:
+                magazine=new NorthEastFinanceUniversity();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+//
+            case 江西财经大学学报:
+                magazine=new JiangxiFinanceUniversity();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+            case 上海财经大学学报:
+                magazine=new ShanghaiFinanceUniversity();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+//
+            case 国际金融研究:
+                magazine=new ResearchonInternationalFinancialandEconomic();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+            case 金融发展研究:
+                magazine=new ResearchonFinancialDevelopment();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
+            case 金融与经济://只处理09年及以后的 且摘要为空
+                String name=file.getParent();
+                int year=Integer.parseInt(name.substring(name.length()-4));
+                if(year>2008) {
+                    magazine = new FinanceAndEconomics();
+                    ExtractFromDifMagazines.extract(magazine, file, writeCSV);
+                }
+                break;
+
+
+        }
+    }
+}
