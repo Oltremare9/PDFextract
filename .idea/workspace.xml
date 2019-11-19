@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF$1.class" afterDir="false" />
@@ -39,6 +38,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -114,7 +114,7 @@
       <workItem from="1573788778045" duration="1835000" />
       <workItem from="1574038477894" duration="19968000" />
       <workItem from="1574083931528" duration="47000" />
-      <workItem from="1574134814147" duration="9351000" />
+      <workItem from="1574134814147" duration="12415000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -130,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574147897364</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="新增贵州财经大学学报">
+      <created>1574150154971</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574150154971</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +158,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增武汉金融" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增武汉金融" />
+    <MESSAGE value="新增贵州财经大学学报" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增贵州财经大学学报" />
   </component>
 </project>

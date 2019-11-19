@@ -76,7 +76,11 @@ public class SwitchMag {
 //                magazine=new AllMagazines();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 贵州财经大学学报:
+//            case 贵州财经大学学报:
+//                magazine=new AllMagazines();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 金融理论探索:
                 magazine=new AllMagazines();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
