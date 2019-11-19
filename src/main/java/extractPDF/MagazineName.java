@@ -2,6 +2,7 @@ package extractPDF;
 
 enum MagazineName {
     //
+    南方金融,
     金融与经济,
     证券市场导报,//不可用删去
     金融发展研究,

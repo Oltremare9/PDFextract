@@ -71,12 +71,12 @@ public class exeFile {
         long start = System.currentTimeMillis();
 
 //          readFile("D:\\LDA\\金融论文\\");
-        WriteCSV writeCSV=new WriteCSV("D:\\财经论文拆分.xls");
+        WriteCSV writeCSV=new WriteCSV("D:\\南方金融拆分.xls");
         extractFile("D:\\LDA\\金融论文txt\\",writeCSV);
         writeCSV.write();
         writeCSV.close();
         long end = System.currentTimeMillis();
-        System.out.println("start time:" + start+ "; end time:" + end+ "; Run Time:" + (end - start)/60000 + "(s)   "+ (end - start)/3600000+ "（mins）");
+        System.out.println("start time:" + start+ "; end time:" + end+ "; Run Time:" + (end - start)/1000 + "(s)   "+ (end - start)/60000+ "（mins）");
 
 
     }

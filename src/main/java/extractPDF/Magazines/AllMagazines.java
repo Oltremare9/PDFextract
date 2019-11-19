@@ -136,7 +136,7 @@ public class AllMagazines {
                         s = CharMatcher.WHITESPACE.replaceFrom(s, "");
 //                        s.replaceAll(" ","");
 //                        s=s.replaceAll("\\ +","");
-                        if (!s.startsWith("中图") && !s.startsWith("["))
+                        if (!s.contains("中图") && !s.startsWith("["))
                             res += s;
                         else
                             break;

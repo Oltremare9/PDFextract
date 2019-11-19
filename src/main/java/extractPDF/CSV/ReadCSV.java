@@ -30,7 +30,7 @@ public class ReadCSV {
                 }
             }
         }
-        System.out.println("为匹配到标题的文章是-----"+starttitle+" "+endtitle+" "+mag);
+        System.out.println("未匹配到标题的文章是----->"+starttitle+" "+endtitle+" "+mag);
         return res;
     }
 }
