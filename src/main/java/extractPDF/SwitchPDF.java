@@ -94,8 +94,12 @@ public class SwitchPDF {
 //                rect = new Rectangle(0, 100, 1000, 660);
 //                SimplyToTxt.commonToTxt(file, out, rect);
 //                break;
-            case 武汉金融:
-                rect = new Rectangle(0, 80, 1000, 640);
+//            case 武汉金融:
+//                rect = new Rectangle(0, 80, 1000, 640);
+//                SimplyToTxt.commonToTxt(file, out, rect);
+//                break;
+            case 贵州财经大学学报:
+                rect = new Rectangle(0, 80, 1000, 710);
                 SimplyToTxt.commonToTxt(file, out, rect);
                 break;
 
