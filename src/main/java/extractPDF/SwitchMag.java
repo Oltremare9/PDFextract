@@ -88,10 +88,15 @@ public class SwitchMag {
 //                magazine=new HaerbinFinanceUniversitu();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 海南金融:
-                magazine=new HainanFinance();
+//            case 海南金融:
+//                magazine=new HainanFinance();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 辽东学院学报:
+                magazine=new LiaodongCollege();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
+
         }
     }
 }

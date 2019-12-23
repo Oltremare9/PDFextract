@@ -1,6 +1,4 @@
 package extractPDF;
-
-
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 
@@ -23,7 +21,7 @@ public class SimplyToTxt {
             System.out.println(file.getName());
             if (pageAmount >= 3) {
                 for (int page = Math.max(start, 0); page < Math.min(pageAmount, end); page++) {
-//                for (int page = 0; page < 1; page++) {
+//                for (int page = 0; page < 1; page++)
                     System.out.println(page);
                     try {
                         stripper.extractRegions(document.getPage(page));
