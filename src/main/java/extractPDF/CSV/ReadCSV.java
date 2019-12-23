@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class ReadCSV {
     private String filePath;
     private static int total=0;
+    private static int success=0;
 
 
     public ReadCSV(String filePath){
@@ -27,11 +28,12 @@ public class ReadCSV {
                 if(title.contains(starttitle)&&title.contains(endtitle)){
                     res[0]=title;
                     res[1]=author;
+                    System.out.println("匹配到标题的文章是----->"+title+" 作者是"+author+" 成功匹配了"+ ++success);
                     return res;
                 }
             }
         }
-        System.out.println("未匹配到标题的文章是----->"+starttitle+" "+endtitle+" "+mag+"总数"+total++);
+        System.out.println("未匹配到标题的文章是----->"+starttitle+" "+endtitle+" "+mag+"总数"+ ++total);
         return res;
     }
 }

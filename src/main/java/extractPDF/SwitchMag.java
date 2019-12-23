@@ -84,8 +84,12 @@ public class SwitchMag {
 //                magazine=new AllMagazines();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 哈尔滨商业大学学报:
-                magazine=new HaerbinFinanceUniversitu();
+//            case 哈尔滨商业大学学报:
+//                magazine=new HaerbinFinanceUniversitu();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 海南金融:
+                magazine=new HainanFinance();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
         }
