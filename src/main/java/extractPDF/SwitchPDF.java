@@ -103,12 +103,24 @@ public class SwitchPDF {
 //                SimplyToTxt.commonToTxt(file, out, rect);
 //                break;
 
-            case 金融理论探索:
-                if(Integer.parseInt(parentName.substring(parentName.length()-4))<2012){
-                    rect=new Rectangle(0,40,1000,700);
+//            case 金融理论探索:
+//                if(Integer.parseInt(parentName.substring(parentName.length()-4))<2012){
+//                    rect=new Rectangle(0,40,1000,700);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                }else{
+//                    rect=new Rectangle(0,90,1000,680);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                }
+//                break;
+            case 哈尔滨商业大学学报:
+                if(Integer.parseInt(parentName.substring(parentName.length()-4))<2011) {
+                    rect = new Rectangle(0, 50, 1000, 690);
+                    SimplyToTxt.commonToTxt(file, out, rect);
+                }else if (Integer.parseInt(parentName.substring(parentName.length()-4))<2013){
+                    rect=new Rectangle(0,95,1000,680);
                     SimplyToTxt.commonToTxt(file, out, rect);
                 }else{
-                    rect=new Rectangle(0,90,1000,680);
+                    rect=new Rectangle(0,90,1000,670);
                     SimplyToTxt.commonToTxt(file, out, rect);
                 }
                 break;

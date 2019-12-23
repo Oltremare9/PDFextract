@@ -2,6 +2,7 @@ package extractPDF;
 
 enum MagazineName {
     //
+    哈尔滨商业大学学报,
     金融理论探索,
     贵州财经大学学报,
     武汉金融,

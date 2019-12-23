@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 public class ReadCSV {
     private String filePath;
+    private static int total=0;
 
 
     public ReadCSV(String filePath){
@@ -30,7 +31,7 @@ public class ReadCSV {
                 }
             }
         }
-        System.out.println("未匹配到标题的文章是----->"+starttitle+" "+endtitle+" "+mag);
+        System.out.println("未匹配到标题的文章是----->"+starttitle+" "+endtitle+" "+mag+"总数"+total++);
         return res;
     }
 }
