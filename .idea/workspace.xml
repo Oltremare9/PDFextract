@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/LocalFinanceResearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ShanghaiFinanceUniversity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/LiaodongCollege.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SimplyToTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SimplyToTxt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ShanghaiFinanceUniversity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SimplyToTxt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SimplyToTxt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF$1.class" afterDir="false" />
@@ -130,7 +127,7 @@
       <workItem from="1574153418309" duration="244000" />
       <workItem from="1577018647877" duration="8012000" />
       <workItem from="1577080000036" duration="9471000" />
-      <workItem from="1577113970816" duration="2103000" />
+      <workItem from="1577113970816" duration="5313000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -174,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577087160090</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="新增辽东学院学报 23日共计6300篇文章">
+      <created>1577116384168</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577116384168</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +203,7 @@
     <MESSAGE value="新增金融理论探索" />
     <MESSAGE value="新增哈尔滨商业大学学报" />
     <MESSAGE value="新增海南金融 直接删除最后引文" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增海南金融 直接删除最后引文" />
+    <MESSAGE value="新增辽东学院学报 23日共计6300篇文章" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增辽东学院学报 23日共计6300篇文章" />
   </component>
 </project>

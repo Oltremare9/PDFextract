@@ -132,14 +132,19 @@ public class SwitchPDF {
 //                }
 //                SimplyToTxt.commonToTxt(file, out, rect);
 //                break;
-            case 辽东学院学报:
-                if(Integer.parseInt(parentName.substring(parentName.length()-4))<=2011) {
-                    rect = new Rectangle(0, 50, 1000, 660);
-                }else{
-                    rect = new Rectangle(0, 90, 1000, 680);
-                }
+//            case 辽东学院学报:
+//                if(Integer.parseInt(parentName.substring(parentName.length()-4))<=2011) {
+//                    rect = new Rectangle(0, 50, 1000, 660);
+//                }else{
+//                    rect = new Rectangle(0, 90, 1000, 680);
+//                }
+//                SimplyToTxt.commonToTxt(file, out, rect);
+//                break;
+            case 地方财政研究:
+                rect = new Rectangle(0, 90, 1000, 670);
                 SimplyToTxt.commonToTxt(file, out, rect);
                 break;
+
         }
     }
 

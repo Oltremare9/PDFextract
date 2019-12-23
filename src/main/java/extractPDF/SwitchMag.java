@@ -92,11 +92,14 @@ public class SwitchMag {
 //                magazine=new HainanFinance();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 辽东学院学报:
-                magazine=new LiaodongCollege();
+//            case 辽东学院学报:
+//                magazine=new LiaodongCollege();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 地方财政研究:
+                magazine=new LocalFinanceResearch();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
-
         }
     }
 }
