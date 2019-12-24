@@ -2,6 +2,7 @@ package extractPDF;
 
 enum MagazineName {
     //
+    内蒙古财经大学学报,
     地方财政研究,
     辽东学院学报,
     海南金融,

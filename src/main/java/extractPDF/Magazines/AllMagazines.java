@@ -33,7 +33,7 @@ public class AllMagazines {
             String end = filename.substring(filename.length() - 3);
 
             //匹配excel文件中标题
-            ReadCSV readCSV = new ReadCSV("D:\\match.csv");
+            ReadCSV readCSV = new ReadCSV("D:\\match2.csv");
             try {
                 res = readCSV.matchCsv(first, end, parent);
             } catch (IOException e) {

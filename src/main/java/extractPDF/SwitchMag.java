@@ -96,8 +96,12 @@ public class SwitchMag {
 //                magazine=new LiaodongCollege();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 地方财政研究:
-                magazine=new LocalFinanceResearch();
+//            case 地方财政研究:
+//                magazine=new LocalFinanceResearch();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 内蒙古财经大学学报:
+                magazine=new NeimengFinanceUniversity();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
         }
