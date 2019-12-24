@@ -100,8 +100,12 @@ public class SwitchMag {
 //                magazine=new LocalFinanceResearch();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 内蒙古财经大学学报:
-                magazine=new NeimengFinanceUniversity();
+//            case 内蒙古财经大学学报:
+//                magazine=new NeimengFinanceUniversity();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 青海金融:
+                magazine=new StockDynamicsAnalysis();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
         }

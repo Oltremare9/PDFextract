@@ -144,17 +144,21 @@ public class SwitchPDF {
 //                rect = new Rectangle(0, 90, 1000, 670);
 //                SimplyToTxt.commonToTxt(file, out, rect);
 //                break;
-            case 内蒙古财经大学学报:
-                if(Integer.parseInt(parentName.substring(parentName.length()-4))<2007) {
-                    rect = new Rectangle(0, 50, 1000, 690);
-                    SimplyToTxt.commonToTxt(file, out, rect);
-                }else if (Integer.parseInt(parentName.substring(parentName.length()-4))<=2008){
-                    rect=new Rectangle(0,70,1000,680);
-                    SimplyToTxt.commonToTxt(file, out, rect);
-                }else{
-                    rect=new Rectangle(0,88,1000,670);
-                    SimplyToTxt.commonToTxt(file, out, rect);
-                }
+//            case 内蒙古财经大学学报:
+//                if(Integer.parseInt(parentName.substring(parentName.length()-4))<2007) {
+//                    rect = new Rectangle(0, 50, 1000, 690);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                }else if (Integer.parseInt(parentName.substring(parentName.length()-4))<=2008){
+//                    rect=new Rectangle(0,70,1000,680);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                }else{
+//                    rect=new Rectangle(0,88,1000,670);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                }
+//                break;
+            case 青海金融:
+                rect = new Rectangle(0, 90, 1000, 670);
+                SimplyToTxt.commonToTxt(file, out, rect);
                 break;
 
         }
