@@ -178,14 +178,19 @@ public class SwitchPDF {
 //                    SimplyToTxt.commonToTxt(file, out, rect);
 //                }
 //                break;
-            case 中央财经大学学报:
-                if (Integer.parseInt(parentName.substring(parentName.length() - 4)) < 2013) {
-                    rect = new Rectangle(0, 45, 1000, 690);
-                    SimplyToTxt.commonToTxt(file, out, rect);
-                } else {
-                    rect = new Rectangle(0, 80, 1000, 670);
-                    SimplyToTxt.commonToTxt(file, out, rect);
-                }
+//            case 中央财经大学学报:
+//                if (Integer.parseInt(parentName.substring(parentName.length() - 4)) < 2013) {
+//                    rect = new Rectangle(0, 45, 1000, 690);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                } else {
+//                    rect = new Rectangle(0, 80, 1000, 670);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                }
+//                break;
+            case 上海金融:
+                rect = new Rectangle(0, 70, 1000, 690);
+                SimplyToTxt.commonToTxt(file, out, rect);
+
                 break;
         }
     }

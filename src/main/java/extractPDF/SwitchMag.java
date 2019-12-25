@@ -116,8 +116,12 @@ public class SwitchMag {
 //                magazine=new JournalofTianjinUniversityofFinanceandEconomics();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 中央财经大学学报:
-                magazine=new JournalofCentralUniversityofFinanceandEconomics();
+//            case 中央财经大学学报:
+//                magazine=new JournalofCentralUniversityofFinanceandEconomics();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 上海金融:
+                magazine=new ShanghaiFinance();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
         }
