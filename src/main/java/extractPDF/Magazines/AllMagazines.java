@@ -206,7 +206,7 @@ public class AllMagazines {
                     }
                     String str[] = res.split("\\[\\d+\\]");
                     for (int i = 0; i < str.length - 1; i++) {
-                        if (str[i].equals(""))
+                        if (str[i].equals("")||str[i].length()>100||str[i].length()<10)
                             continue;
                         if (!str[i].startsWith("•")) {
 //                            System.out.println(str[i]);
@@ -297,7 +297,7 @@ public class AllMagazines {
                     while ((s = re.readLine()) != null) {
                         s = CharMatcher.WHITESPACE.trimFrom(s);
                         s = CharMatcher.WHITESPACE.replaceFrom(s, "");
-                        if (!s.contains("二、"))
+                        if (!s.contains("二、")||!s.contains("一"))
                             res += s;
                         else
                             break;
