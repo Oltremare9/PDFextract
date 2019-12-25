@@ -160,6 +160,15 @@ public class SwitchPDF {
                 rect = new Rectangle(0, 85, 1000, 670);
                 SimplyToTxt.commonToTxt(file, out, rect);
                 break;
+            case 金融经济学研究:
+                if (Integer.parseInt(parentName.substring(parentName.length() - 4)) <= 2007) {
+                    rect = new Rectangle(0, 85, 1000, 700);
+                    SimplyToTxt.commonToTxt(file, out, rect);
+                } else {
+                    rect = new Rectangle(0, 70, 1000, 670);
+                    SimplyToTxt.commonToTxt(file, out, rect);
+                }
+                break;
 
         }
     }

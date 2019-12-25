@@ -33,7 +33,7 @@ public class AllMagazines {
             String end = filename.substring(filename.length() - 3);
 
             //匹配excel文件中标题
-            ReadCSV readCSV = new ReadCSV("D:\\match2.csv");
+            ReadCSV readCSV = new ReadCSV("D:\\match.csv");
             try {
                 res = readCSV.matchCsv(first, end, parent);
             } catch (IOException e) {
@@ -310,6 +310,23 @@ public class AllMagazines {
 
         }
         return res;
+    }
+    protected ArrayList<String> removeExtraAuthor(ArrayList<String> list){
+        if(list.size()>0){
+            String str=list.get(list.size()-1);
+            int index=str.indexOf("责任");
+            int index2=str.indexOf("作者");
+            if(index!=-1 && index2!=-1 )
+                index= Math.min(index,index2);
+            else if (index!=-1 || index2!=-1)
+                index= Math.max(index,index2);
+            if(index!=-1){
+                str=str.substring(0,index);
+            }
+            list.remove(list.size()-1);
+            list.add(str);
+        }
+        return list;
     }
 }
 

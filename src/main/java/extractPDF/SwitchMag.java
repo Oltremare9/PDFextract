@@ -49,7 +49,7 @@ public class SwitchMag {
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
 //            case 上海财经大学学报:
-//                magazine=new ShanghaiFinanceUniversity();
+//                magazine=new AllMagazines();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
 //            case 国际金融研究:
@@ -104,8 +104,12 @@ public class SwitchMag {
 //                magazine=new NeimengFinanceUniversity();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 青海金融:
-                magazine=new QinghaiFinance();
+//            case 青海金融:
+//                magazine=new QinghaiFinance();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 金融经济学研究:
+                magazine=new FinancialEconomicsResearch();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
         }
