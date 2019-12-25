@@ -169,7 +169,15 @@ public class SwitchPDF {
                     SimplyToTxt.commonToTxt(file, out, rect);
                 }
                 break;
-
+            case 现代财经天津财经大学学报:
+                if (Integer.parseInt(parentName.substring(parentName.length() - 4)) < 2013) {
+                    rect = new Rectangle(0, 50, 1000, 700);
+                    SimplyToTxt.commonToTxt(file, out, rect);
+                } else {
+                    rect = new Rectangle(0, 90, 1000, 665);
+                    SimplyToTxt.commonToTxt(file, out, rect);
+                }
+                break;
         }
     }
 

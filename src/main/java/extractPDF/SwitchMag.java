@@ -108,8 +108,12 @@ public class SwitchMag {
 //                magazine=new QinghaiFinance();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
-            case 金融经济学研究:
-                magazine=new FinancialEconomicsResearch();
+//            case 金融经济学研究:
+//                magazine=new FinancialEconomicsResearch();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
+            case 现代财经天津财经大学学报:
+                magazine=new JournalofTianjinUniversityofFinanceandEconomics();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
         }

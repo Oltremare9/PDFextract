@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinancialEconomicsResearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JournalofTianjinUniversityofFinanceandEconomics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/AllMagazines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/AllMagazines.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/AllMagazines.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/AllMagazines.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF$1.class" afterDir="false" />
@@ -132,7 +130,7 @@
       <workItem from="1577113970816" duration="5550000" />
       <workItem from="1577167031916" duration="6408000" />
       <workItem from="1577184554491" duration="4953000" />
-      <workItem from="1577257622744" duration="7878000" />
+      <workItem from="1577257622744" duration="11168000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -211,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577263570370</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="新增金融经济学研究 770篇">
+      <created>1577274988614</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1577274988614</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +246,7 @@
     <MESSAGE value="新增内蒙古财经大学学报 新一批文章达到10700" />
     <MESSAGE value="青海金融参数待调" />
     <MESSAGE value="新增青海金融" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增青海金融" />
+    <MESSAGE value="新增金融经济学研究 770篇" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增金融经济学研究 770篇" />
   </component>
 </project>
