@@ -157,7 +157,7 @@ public class SwitchPDF {
 //                }
 //                break;
             case 青海金融:
-                rect = new Rectangle(0, 90, 1000, 670);
+                rect = new Rectangle(0, 85, 1000, 670);
                 SimplyToTxt.commonToTxt(file, out, rect);
                 break;
 

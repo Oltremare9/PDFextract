@@ -105,7 +105,7 @@ public class SwitchMag {
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
             case 青海金融:
-                magazine=new StockDynamicsAnalysis();
+                magazine=new QinghaiFinance();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
         }

@@ -70,8 +70,8 @@ public class exeFile {
 
         long start = System.currentTimeMillis();
 
-//        readFile("D:\\LDA\\金融论文\\内蒙古财经大学学报");
-        WriteCSV writeCSV=new WriteCSV("D:\\内蒙古财经大学学报.xls");
+//        readFile("D:\\LDA\\金融论文\\青海金融");
+        WriteCSV writeCSV=new WriteCSV("D:\\青海金融.xls");
         extractFile("D:\\LDA\\金融论文txt\\",writeCSV);
         writeCSV.write();
         writeCSV.close();
