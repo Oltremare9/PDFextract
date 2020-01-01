@@ -3,11 +3,13 @@ package extractPDF;
 import extractPDF.CSV.WriteCSV;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class exeFile {
     static SwitchMag switchMag=new SwitchMag();
-    public static void readFile(String path) {
+    public static void readFile(String path,String out){
+//        System.out.println("ssss");
         File file = new File(path);
         if (file.exists()) {
             File[] files = file.listFiles();
@@ -15,7 +17,7 @@ public class exeFile {
                 for (File file2 : files) {
                     if (file2.isDirectory()) {
 //                        System.out.println("文件夹:" + file2.getAbsolutePath());
-                        readFile(file2.getAbsolutePath());
+                        readFile(file2.getAbsolutePath(),out);
 
                     } else {
 //                        System.out.println("文件:" + file2.getAbsolutePath());
@@ -23,7 +25,11 @@ public class exeFile {
                         String parentName = file2.getParent();
                         int index = parentName.lastIndexOf("\\");
                         parentName = parentName.substring(index + 1);
-                        SwitchPDF.choose(file2,"D:\\LDA\\金融论文txt\\" + parentName + "\\");
+                        try {
+                            SwitchPDF.choose(file2, out + "\\" + parentName + "\\");
+                        }catch (IOException e){
+
+                        }
 
                     }
                 }
@@ -66,18 +72,17 @@ public class exeFile {
         }
 
 
-    public static void main(String args[]) {
-
-        long start = System.currentTimeMillis();
-
-//        readFile("D:\\LDA\\金融论文\\上海金融");
-        WriteCSV writeCSV=new WriteCSV("D:\\上海金融.xls");
-        extractFile("D:\\LDA\\金融论文txt\\",writeCSV);
-        writeCSV.write();
-        writeCSV.close();
-        long end = System.currentTimeMillis();
-        System.out.println("start time:" + start+ "; end time:" + end+ "; Run Time:" + (end - start)/1000 + "(s)   "+ (end - start)/60000+ "（mins）"+((end - start)/1000)%60+"s");
-
-
-    }
+//    public static void extract() {
+//
+//        long start = System.currentTimeMillis();
+//        readFile("D:\\LDA\\金融论文\\上海金融","D:\\LDA\\金融论文txt\\");
+//        WriteCSV writeCSV=new WriteCSV("D:\\上海金融.xls");
+//        extractFile("D:\\LDA\\金融论文txt\\",writeCSV);
+//        writeCSV.write();
+//        writeCSV.close();
+//        long end = System.currentTimeMillis();
+//        System.out.println("start time:" + start+ "; end time:" + end+ "; Run Time:" + (end - start)/1000 + "(s)   "+ (end - start)/60000+ "（mins）"+((end - start)/1000)%60+"s");
+//
+//
+//    }
 }

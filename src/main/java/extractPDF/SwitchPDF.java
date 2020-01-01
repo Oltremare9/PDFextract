@@ -1,22 +1,50 @@
 package extractPDF;
 
+import com.csvreader.CsvReader;
 import extractPDF.CSV.WriteCSV;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class SwitchPDF {
 
     private static WriteCSV writeCSV;
 
-    public static void choose(File file, String out) {
+    public static void choose(File file, String out) throws IOException {
 
         String parentName = file.getParent();
         int index = parentName.lastIndexOf("\\");
         parentName = parentName.substring(index + 1);
         String mag = parentName.substring(0, parentName.length() - 4);
+        String ruleyear=parentName.substring(parentName.length()-4);
         Rectangle rect = null;
-        switch (MagazineName.valueOf(mag)) {
+
+        //从文件中读取
+        CsvReader csvReader=new CsvReader("D:\\rule.csv",',', Charset.forName("UTF-8"));
+        while(csvReader.readRecord()){
+            String str=csvReader.get(0);
+            String title=str.substring(0,str.length()-4);
+            String year=str.substring(str.length()-4);
+
+            if(title.equals(mag)){
+                if(Integer.parseInt(year)<=Integer.parseInt(ruleyear)){
+                    int x=Integer.parseInt(csvReader.get(1));
+                    int y=Integer.parseInt(csvReader.get(2));
+                    int width=Integer.parseInt(csvReader.get(3));
+                    int height=Integer.parseInt(csvReader.get(4));
+                    rect=new Rectangle(x,y,width,height);
+                    SimplyToTxt.commonToTxt(file, out, rect);
+                    break;
+                }
+            }
+        }
+
+
+
+
+//        switch (MagazineName.valueOf(mag)) {
 
 //            case 财经论丛: {//12年之前已经重做
 //                if(Integer.parseInt(parentName.substring(parentName.length()-4))>=2013)
@@ -187,12 +215,12 @@ public class SwitchPDF {
 //                    SimplyToTxt.commonToTxt(file, out, rect);
 //                }
 //                break;
-            case 上海金融:
-                rect = new Rectangle(0, 70, 1000, 690);
-                SimplyToTxt.commonToTxt(file, out, rect);
-
-                break;
-        }
+//            case 上海金融:
+//                rect = new Rectangle(0, 70, 1000, 690);
+//                SimplyToTxt.commonToTxt(file, out, rect);
+//
+//                break;
+//        }
     }
 
 

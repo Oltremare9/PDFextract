@@ -14,7 +14,7 @@ public class JournalofTianjinUniversityofFinanceandEconomics extends AllMagazine
             if(index!=-1&&index<list.size()){
                 char c=str.charAt(index);
                 if(c>='A'&& c<='z')
-                    str=str.substring(0,index);
+                str=str.substring(0,index);
             }
             list.remove(list.size()-1);
             if(str.length()<80){
