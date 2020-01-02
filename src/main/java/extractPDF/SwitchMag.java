@@ -20,10 +20,10 @@ public class SwitchMag {
         mag = parentName.substring(0, parentName.length() - 4);
 //        System.out.println(mag);
         switch (MagazineName.valueOf(mag)) {
-            case 河南财政税务高等专科学校学报:
-                magazine=new JournalofHenanFinanceTaxationCollege();
-                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
-                break;
+//            case 河南财政税务高等专科学校学报:
+//                magazine=new JournalofHenanFinanceTaxationCollege();
+//                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+//                break;
 //            case 财经论丛:
 //                magazine=new CollectedEssaysonFinanceandEconomics();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
@@ -128,6 +128,10 @@ public class SwitchMag {
 //                magazine=new ShanghaiFinance();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
+            case 湖南税务高等专科学校学报:
+                magazine=new AllMagazines();
+                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
+                break;
         }
     }
 }
