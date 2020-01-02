@@ -105,7 +105,7 @@ public class ShowUI {
         choosetxt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser("D:\\LDA\\金融论文txt");             //设置选择器
+                JFileChooser chooser = new JFileChooser("D:\\LDA");             //设置选择器
                 chooser.setMultiSelectionEnabled(true);             //设为多选
                 chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                 int returnVal = chooser.showOpenDialog(choosetxt);        //是否打开文件选择框
@@ -222,8 +222,12 @@ public class ShowUI {
                         if (pdfURL.length() == 0 || txtURL.length() == 0) {
                             JOptionPane.showMessageDialog(null, "没有选择路径",
                                     "错误", JOptionPane.ERROR_MESSAGE);
-                        } else
+                        } else {
                             readFile(pdfURL, txtURL);
+                            JOptionPane.showMessageDialog(null, "处理完成",
+                                    "完成", JOptionPane.INFORMATION_MESSAGE);
+                        }
+
                         break;
                     case 2:
                         if (pdfURL.length() == 0 || txtURL.length() == 0 ||excelURL.length()==0) {
@@ -231,7 +235,7 @@ public class ShowUI {
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
                             readFile(pdfURL, txtURL);
-                            WriteCSV writeCSV1 = new WriteCSV(excelURL);
+                            WriteCSV writeCSV1 = new WriteCSV(excelURL+"\\res.xls");
                             extractFile(txtURL, writeCSV1);
                             writeCSV1.write();
                             writeCSV1.close();
@@ -242,7 +246,7 @@ public class ShowUI {
                             JOptionPane.showMessageDialog(null, "没有选择路径",
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
-                            WriteCSV writeCSV2 = new WriteCSV(excelURL);
+                            WriteCSV writeCSV2 = new WriteCSV(excelURL+"\\res.xls");
                             extractFile(txtURL, writeCSV2);
                             writeCSV2.write();
                             writeCSV2.close();

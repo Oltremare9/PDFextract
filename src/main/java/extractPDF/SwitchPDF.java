@@ -29,7 +29,7 @@ public class SwitchPDF {
             String year=str.substring(str.length()-4);
 
             if(title.equals(mag)){
-                if(Integer.parseInt(year)<=Integer.parseInt(ruleyear)){
+                if(Integer.parseInt(ruleyear)<=Integer.parseInt(year)){
                     int x=Integer.parseInt(csvReader.get(1));
                     int y=Integer.parseInt(csvReader.get(2));
                     int width=Integer.parseInt(csvReader.get(3));

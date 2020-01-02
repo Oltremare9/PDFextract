@@ -33,7 +33,7 @@ public class AllMagazines {
             String end = filename.substring(filename.length() - 3);
 
             //匹配excel文件中标题
-            ReadCSV readCSV = new ReadCSV("D:\\match.csv");
+            ReadCSV readCSV = new ReadCSV("D:\\match2.csv");
             try {
                 res = readCSV.matchCsv(first, end, parent);
             } catch (IOException e) {
@@ -142,6 +142,8 @@ public class AllMagazines {
                             break;
                     }
                     res = res.substring(4, res.length());
+                    if(res.startsWith("]"))
+                        res=res.substring(1);
 //                    System.out.println(res);
                     break;
                 }
@@ -186,6 +188,8 @@ public class AllMagazines {
 //        return res.substring(3);
         if (res.length() > 3)
             res = res.substring(3);
+        if(res.startsWith("]"))
+            res=res.substring(1);
         return res;
     }
 
@@ -263,6 +267,8 @@ public class AllMagazines {
                     resstr = resstr.substring(0, index - 1);
 //                    System.out.println(resstr);
                 }
+                result.remove(result.size()-1);
+                result.add(resstr);
                 num+=result.size();
 
             }

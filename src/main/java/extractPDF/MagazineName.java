@@ -2,6 +2,7 @@ package extractPDF;
 
 enum MagazineName {
     //
+    河南财政税务高等专科学校学报,
     内蒙古财经大学学报,
     地方财政研究,
     青海金融,
