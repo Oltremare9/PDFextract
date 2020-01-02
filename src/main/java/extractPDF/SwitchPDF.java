@@ -22,12 +22,13 @@ public class SwitchPDF {
         Rectangle rect = null;
 
         //从文件中读取
-        CsvReader csvReader=new CsvReader("D:\\rule.csv",',', Charset.forName("UTF-8"));
+        CsvReader csvReader=new CsvReader("D:\\extract.csv",',', Charset.forName("utf-8"));
         while(csvReader.readRecord()){
             String str=csvReader.get(0);
             String title=str.substring(0,str.length()-4);
             String year=str.substring(str.length()-4);
 
+            System.out.println(title.equals(mag));
             if(title.equals(mag)){
                 if(Integer.parseInt(ruleyear)<=Integer.parseInt(year)){
                     int x=Integer.parseInt(csvReader.get(1));

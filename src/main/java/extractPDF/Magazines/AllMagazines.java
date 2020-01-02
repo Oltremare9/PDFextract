@@ -142,7 +142,7 @@ public class AllMagazines {
                             break;
                     }
                     res = res.substring(4, res.length());
-                    if(res.startsWith("]"))
+                    if(res.startsWith("]")||res.startsWith("〕"))
                         res=res.substring(1);
 //                    System.out.println(res);
                     break;
@@ -188,7 +188,7 @@ public class AllMagazines {
 //        return res.substring(3);
         if (res.length() > 3)
             res = res.substring(3);
-        if(res.startsWith("]"))
+        if(res.startsWith("]")||res.startsWith("〕"))
             res=res.substring(1);
         return res;
     }
@@ -243,23 +243,23 @@ public class AllMagazines {
             if (result.size() >= 1) {
                 String str = result.get(result.size() - 1);
                 String resstr = "";
-                while (true) {
-                    int index = str.indexOf(".");
-                    if (index == -1 || index == str.length() - 1) {
-                        resstr += str;
-                        break;
-                    }
-                    char c1 = str.charAt(index + 1);
-                    if ((c1 <= 'Z' && c1 >= 'A') || (c1 <= 'z' && c1 >= 'a')) {
-                        break;
-                    } else {
-//                        System.out.println(file.getName());
-//                        System.out.println(index);
-                        resstr += str.substring(0, index);
-
-                        str = str.substring(index + 1);
-                    }
-                }
+//                while (true) {
+//                    int index = str.indexOf(".");
+//                    if (index == -1 || index == str.length() - 1) {
+//                        resstr += str;
+//                        break;
+//                    }
+//                    char c1 = str.charAt(index + 1);
+//                    if ((c1 <= 'Z' && c1 >= 'A') || (c1 <= 'z' && c1 >= 'a')) {
+//                        break;
+//                    } else {
+////                        System.out.println(file.getName());
+////                        System.out.println(index);
+//                        resstr += str.substring(0, index);
+//
+//                        str = str.substring(index + 1);
+//                    }
+//                }
                 if (resstr.contains("责任") || resstr.contains("特约")) {
 //                    System.out.println(resstr);
                     int index = Math.max(resstr.indexOf("责任"), resstr.indexOf("特约"));

@@ -128,10 +128,14 @@ public class SwitchMag {
 //                magazine=new ShanghaiFinance();
 //                ExtractFromDifMagazines.extract(magazine,file,writeCSV);
 //                break;
+            case 河南财政税务高等专科学校学报:
+            case 长春金融高等专科学校学报:
             case 湖南税务高等专科学校学报:
                 magazine=new AllMagazines();
                 ExtractFromDifMagazines.extract(magazine,file,writeCSV);
                 break;
+
+
         }
     }
 }
