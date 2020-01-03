@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
+    <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="新增湖南税务高等专科学校学报 1300篇 测试allMagazine基本可用">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/MagazineName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/AllMagazines.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/AllMagazines.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,13 +65,14 @@
   </component>
   <component name="ProjectId" id="1TdT3mZzaa0mHndNcYuN0veeM9R" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -147,7 +151,9 @@
       <workItem from="1577776077448" duration="358000" />
       <workItem from="1577869170370" duration="22397000" />
       <workItem from="1577897989251" duration="5843000" />
-      <workItem from="1577931163164" duration="2476000" />
+      <workItem from="1577931163164" duration="12449000" />
+      <workItem from="1578019178356" duration="58000" />
+      <workItem from="1578036040292" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -268,7 +274,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577931237834</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="新增湖南税务高等专科学校学报 1300篇 测试allMagazine基本可用">
+      <created>1577936789617</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1577936789617</updated>
+    </task>
+    <task id="LOCAL-00019" summary="整合长春金融高等专科学校学报,湖南税务高等专科学校学报,河南财政税务高等专科学校学报, 4k篇 修改allMagazine最后一条引文的问题，下一步考虑改变switch case结构">
+      <created>1577948134122</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1577948134122</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +324,9 @@
     <MESSAGE value="新增上海财经 1900篇 2006 2007引文很差" />
     <MESSAGE value="增加界面ui 根据rule.csv文件设置提取规则。考虑新增操作" />
     <MESSAGE value="新增河南财政税务高等专科学校学报 1600篇 使用ui进行拆分 allmagazine功能已经比较完善" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增河南财政税务高等专科学校学报 1600篇 使用ui进行拆分 allmagazine功能已经比较完善" />
+    <MESSAGE value="新增湖南税务高等专科学校学报 1300篇 测试allMagazine基本可用" />
+    <MESSAGE value="整合长春金融高等专科学校学报,湖南税务高等专科学校学报,河南财政税务高等专科学校学报, 4k篇 修改allMagazine最后一条引文的问题，下一步考虑改变switch case结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="整合长春金融高等专科学校学报,湖南税务高等专科学校学报,河南财政税务高等专科学校学报, 4k篇 修改allMagazine最后一条引文的问题，下一步考虑改变switch case结构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,9 +334,14 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java</url>
           <line>30</line>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="index" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

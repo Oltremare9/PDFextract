@@ -2,6 +2,7 @@ package extractPDF;
 
 enum MagazineName {
     //
+    test,
     长春金融高等专科学校学报,
     湖南税务高等专科学校学报,
     河南财政税务高等专科学校学报,
