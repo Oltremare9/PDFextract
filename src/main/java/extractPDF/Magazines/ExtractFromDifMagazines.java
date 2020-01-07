@@ -38,6 +38,12 @@ public class ExtractFromDifMagazines {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String text="";
+        try {
+            text=magazine.extractText(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ArrayList<String> quo=new ArrayList<String>();
         try {
             quo = magazine.extractQuatation(file);
@@ -48,7 +54,8 @@ public class ExtractFromDifMagazines {
         writeCSV.writeAuthor(author);
         writeCSV.writeMag(file);
         writeCSV.writeAbstract(abs);
-        writeCSV.writeForeword(foreword);
+//        writeCSV.writeForeword(foreword);
+        writeCSV.writeText(text);
         writeCSV.writeKeyword(keyword);
         writeCSV.writeQuotation(quo);
 //        writeCSV.writeQuotationWithEnglish(quo);

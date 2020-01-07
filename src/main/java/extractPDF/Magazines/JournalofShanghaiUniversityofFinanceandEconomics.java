@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ContemporaryFinanceEconomics extends  AllMagazines{
+public class JournalofShanghaiUniversityofFinanceandEconomics extends AllMagazines{
     @Override
     public String extractText(File file) throws IOException {
         String res = "";
@@ -16,7 +16,7 @@ public class ContemporaryFinanceEconomics extends  AllMagazines{
             String s = "";
             BufferedReader re = new BufferedReader(new FileReader(file));
             while ((s = re.readLine()) != null) {
-                if(s.contains("一、"))
+                if(s.contains("一"))
                     break;
             }
             while ((s = re.readLine()) != null) {
@@ -24,9 +24,7 @@ public class ContemporaryFinanceEconomics extends  AllMagazines{
                 s = CharMatcher.WHITESPACE.replaceFrom(s, "");
                 if(s.contains("参考文献")||s.contains("责任编辑"))
                     break;
-                else if (s.contains("表\\d")||s.contains("图\\d")||s.contains("作者简介")||
-                        s.contains("DOI")||s.contains("关键词")||s.contains("中图")
-                        ||s.contains("基金")||s.contains("收稿"))  {
+                else if (s.contains("表\\d")||s.contains("图\\d")) {
                     continue;
                 }else{
                     res+=s;

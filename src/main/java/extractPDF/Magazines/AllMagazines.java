@@ -4,10 +4,7 @@ import com.google.common.base.CharMatcher;
 import extractPDF.CSV.ReadCSV;
 import jxl.read.biff.BiffException;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class AllMagazines {
@@ -26,14 +23,14 @@ public class AllMagazines {
         filename=filename.substring(0,index);
         filename=filename.replaceAll("_","");
 
-        if(filename.contains("省略")) {
+//        if(filename.contains("省略")) {
             filename = filename.replaceAll("省略", "");
 
             String first = filename.substring(0, 3);
             String end = filename.substring(filename.length() - 3);
 
             //匹配excel文件中标题
-            ReadCSV readCSV = new ReadCSV("D:\\match2.csv");
+            ReadCSV readCSV = new ReadCSV("D:\\match.csv");
             try {
                 res = readCSV.matchCsv(first, end, parent);
             } catch (IOException e) {
@@ -41,10 +38,10 @@ public class AllMagazines {
             }
             title = res[0];
             author = res[1];
-        }else{
-            title=filename;
-            author=aut;
-        }
+//        }else{
+//            title=filename;
+//            author=aut;
+//        }
     }
     public String extractTitle(File file) throws IOException {
         /*
@@ -290,6 +287,35 @@ public class AllMagazines {
         return result;
     }
 
+
+    public String extractText(File file) throws IOException {
+        String res = "";
+        if (file.isFile()) {
+
+            String s = "";
+            BufferedReader re = new BufferedReader(new FileReader(file));
+            while ((s = re.readLine()) != null) {
+                if(s.contains("中图"))
+                    break;
+            }
+            while ((s = re.readLine()) != null) {
+                s = CharMatcher.WHITESPACE.trimFrom(s);
+                s = CharMatcher.WHITESPACE.replaceFrom(s, "");
+                if(s.contains("参考文献")||s.contains("责任编辑"))
+                    break;
+                else if (s.contains("表\\d")||s.contains("图\\d")||s.contains("作者简介")||
+                        s.contains("DOI")||s.contains("关键词")||s.contains("中图")
+                        ||s.contains("基金")||s.contains("收稿"))  {
+                    continue;
+                }else{
+                    res+=s;
+                }
+
+            }
+
+        }
+        return res;
+    }
     public String extractForeword(File file) throws IOException {
         String res = "";
         if (file.isFile()) {

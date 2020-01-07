@@ -39,21 +39,46 @@ public class QinghaiFinance extends AllMagazines {
 
     @Override
     public ArrayList<String> extractQuatation(File file) throws IOException {
-        ArrayList<String>list= super.extractQuatation(file);
-        if(list.size()>0){
-            String str=list.get(list.size()-1);
-            int index=str.indexOf("责任");
-            int index2=str.indexOf("作者");
-            if(index!=-1 && index2!=-1 )
-                index= Math.min(index,index2);
-            else if (index!=-1 || index2!=-1)
-                index= Math.max(index,index2);
-            if(index!=-1){
-                str=str.substring(0,index);
+        ArrayList<String> list = super.extractQuatation(file);
+        if (list.size() > 0) {
+            String str = list.get(list.size() - 1);
+            int index = str.indexOf("责任");
+            int index2 = str.indexOf("作者");
+            if (index != -1 && index2 != -1)
+                index = Math.min(index, index2);
+            else if (index != -1 || index2 != -1)
+                index = Math.max(index, index2);
+            if (index != -1) {
+                str = str.substring(0, index);
             }
-            list.remove(list.size()-1);
+            list.remove(list.size() - 1);
             list.add(str);
         }
         return list;
+    }
+
+    @Override
+    public String extractText(File file) throws IOException {
+        String res = "";
+        if (file.isFile()) {
+            String s = "";
+            BufferedReader re = new BufferedReader(new FileReader(file));
+            while ((s = re.readLine()) != null) {
+                s = CharMatcher.WHITESPACE.trimFrom(s);
+                s = CharMatcher.WHITESPACE.replaceFrom(s, "");
+                if (s.contains("参考文献") || s.contains("责任编辑"))
+                    break;
+                else if (s.contains("表\\d") || s.contains("图\\d") || s.contains("作者简介") ||
+                        s.contains("DOI") || s.contains("关键词") || s.contains("中图")
+                        || s.contains("项目基金")) {
+                    continue;
+                } else {
+                    res += s;
+                }
+
+            }
+
+        }
+        return res;
     }
 }

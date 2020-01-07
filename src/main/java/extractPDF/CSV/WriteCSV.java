@@ -95,6 +95,16 @@ public class WriteCSV {
         }
     }
 
+    public void writeText(String text) {
+        Label label = new Label(5, count, text);
+        try {
+            sheet.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+            System.out.println("添加正文失败");
+        }
+    }
+
     public void writeForeword(String foreword) {
         Label label = new Label(5, count, foreword);
         try {
