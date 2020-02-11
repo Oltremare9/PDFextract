@@ -7,6 +7,7 @@ import org.apache.pdfbox.rendering.PDFRenderer;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.utils.Converters;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static extractPDF.openCV.OpenCVOperation.*;
+import static extractPDF.util.FileOperation.convertFileToByteList;
 import static extractPDF.util.FileOperation.deleteFiles;
 
 public class CurrentPDFOperation {
@@ -36,9 +38,7 @@ public class CurrentPDFOperation {
     * @Author: whn
     * @Date: 2020/2/11
     */
-    public static void showCurrentLine(File file,Rectangle rect){
-        String output=pngOutPath+
-                file.getName().substring(0,file.getName().length()-4);
+    public static void showCurrentLine(File file,Rectangle rect) throws IOException {
         PDDocument pdDocument= null;
         try {
             pdDocument = PDDocument.load(file);
@@ -62,9 +62,31 @@ public class CurrentPDFOperation {
             float r= currentWidth/imageWidth;
             g.setColor(Color.RED);//画笔颜色
             g.drawRect((int)(rect.x/r),(int)(rect.y/r),(int)(rect.width/r),(int)(rect.height/r));
+
+            //原文件绝对目录
+            String absPath=file.getAbsolutePath();
+            //原文件文件名
+            String filename=file.getName();
+            //上一级目录名 期刊名+年
+            String magYear;
+            int index=absPath.lastIndexOf("\\");
+            absPath=absPath.substring(0,index);
+            index=absPath.lastIndexOf("\\");
+            magYear=absPath.substring(index+1);
+            //期刊名
+            absPath=absPath.substring(0,index);
+            index=absPath.lastIndexOf("\\");
+            String mag=absPath.substring(index+1);
+            String res=pngOutPath + mag+"\\"+magYear+"\\"+filename.substring(0,filename.length()-4)
+                    +"\\";
+            File dstFile=new File(res);
+            if(!dstFile.exists()) {
+                dstFile.mkdirs();
+                dstFile.createNewFile();
+            }
             FileOutputStream out = null;//输出图片的地址
             try {
-                out = new FileOutputStream(output+i+".png");
+                out = new FileOutputStream(res+i+".png");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -87,24 +109,18 @@ public class CurrentPDFOperation {
     * @Author: whn
     * @Date: 2020/2/11
     */
-    //中文pdf另存路径
-    static final String tempPDFPath="D:\\LDA\\runnning_output\\tempPDF\\temp.pdf";
     //切分临时图片位置
-    static final String tempSplitPath="D:\\LDA\\runnning_output\\tempSplitPng";
+    static final String tempSplitPath="D:\\LDA\\runnning_output\\tempSplitPng\\";
     //拆分图片dpi
     static final int dpi=250;
     
-    public static List<Integer> getPageRectangle(File pdfFile) {
-        File source= new File(pdfFile.getAbsolutePath());
-        File des=new File(tempPDFPath);
-        try {
-            FileOperation.copyFileUsingStream(source,des);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static List<Integer> getPageRectangle(File pdfFile) throws IOException {
+
 //        deleteFiles(tempSplitPath);
-        pdf2Image(tempPDFPath,tempSplitPath,dpi);
-        Mat image = Imgcodecs.imread(tempSplitPath+"\\temp_1.png");
+        String returnPath=pdf2Image(pdfFile,tempSplitPath,dpi);
+//        List<Byte> lis=convertFileToByteList(returnPath+"temp_1.png");
+        Mat image= inputStream2Mat(returnPath+"temp_1.png");
+//        Mat image = Imgcodecs.imread(returnPath+"temp_1.png");
         List<Integer> list= new ArrayList<>();
         list.add(0,image.width());
         list.add(1,image.height());

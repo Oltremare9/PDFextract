@@ -2,14 +2,15 @@ package extractPDF.openCV;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
+
 import org.opencv.core.*;
+import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Iterator;
 import java.util.List;
 
@@ -83,12 +84,27 @@ public class OpenCVOperation {
     }
 
 
-    public static String pdf2Image(String PdfFilePath, String dstImgFolder, int dpi) {
-        File file = new File(PdfFilePath);
+    public static String pdf2Image(File pdfFile, String dstImgFolder, int dpi) {
+        //原文件绝对目录
+        String absPath=pdfFile.getAbsolutePath();
+        //原文件文件名
+        String filename=pdfFile.getName();
+        //上一级目录名 期刊名+年
+        String magYear;
+        int index=absPath.lastIndexOf("\\");
+        absPath=absPath.substring(0,index);
+        index=absPath.lastIndexOf("\\");
+        magYear=absPath.substring(index+1);
+        //期刊名
+        absPath=absPath.substring(0,index);
+        index=absPath.lastIndexOf("\\");
+        String mag=absPath.substring(index+1);
+
+        File file = pdfFile;
         PDDocument pdDocument;
+        String res="";
         try {
-            int dot = file.getName().lastIndexOf('.');
-            String imagePDFName = file.getName().substring(0, dot); // 获取图片文件名
+            String imagePDFName = "temp"; // 获取图片文件名
             String imgFolderPath = dstImgFolder;
 
             pdDocument = PDDocument.load(file);
@@ -99,13 +115,21 @@ public class OpenCVOperation {
 //            if (pdDocument.getNumberOfPages() > 2) {
 //                Integer i = 1;
                 System.out.println("正在转换第" + i + "页");
-                String imgFilePathPrefix = imgFolderPath + File.separator + imagePDFName;
+                res=imgFolderPath + mag+"\\"+magYear+"\\"+filename.substring(0,filename.length()-4)
+                        +"\\";
+                String imgFilePathPrefix = imgFolderPath + mag+"\\"+magYear+"\\"+filename.substring(0,filename.length()-4)
+                        +"\\"+ imagePDFName;
                 imgFilePath = new StringBuffer();
                 imgFilePath.append(imgFilePathPrefix);
                 imgFilePath.append("_");
                 imgFilePath.append(i);
                 imgFilePath.append(".png");
                 File dstFile = new File(imgFilePath.toString());
+                if(!dstFile.exists()) {
+                    dstFile.mkdirs();
+                    dstFile.createNewFile();
+
+                }
                 BufferedImage image = renderer.renderImageWithDPI(i, dpi);
                 ImageIO.write(image, "png", dstFile);
                 System.out.println("第" + i + "页转换完成");
@@ -115,8 +139,33 @@ public class OpenCVOperation {
 
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return res;
         }
-        return null;
+        return res;
     }
+
+    public static Mat inputStream2Mat(String path) throws IOException {
+        InputStream inputStream=new FileInputStream(new File(path));
+        BufferedInputStream bis = new BufferedInputStream(inputStream);
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int bytesRead = 0;
+        while ((bytesRead = bis.read(buffer)) != -1) {
+            os.write(buffer, 0, bytesRead);
+        }
+        os.flush();
+        os.close();
+        bis.close();
+
+        Mat encoded = new Mat(1, os.size(), 0);
+        encoded.put(0, 0, os.toByteArray());
+
+        Mat decoded = Imgcodecs.imdecode(encoded, -1);
+        encoded.release();
+        return decoded;
+    }
+
+
+
+
 }

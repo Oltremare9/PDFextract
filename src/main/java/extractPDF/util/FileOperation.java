@@ -2,6 +2,9 @@ package extractPDF.util;
 
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FileOperation {
     public static void copyFileUsingStream(File source, File dest)
@@ -43,6 +46,17 @@ public class FileOperation {
             }
             file.delete();
         }
+    }
+    public static List<Byte> convertFileToByteList(String path) throws IOException {
+        FileInputStream fileInputStream=new FileInputStream(
+                new File(path));
+        byte[] data=new byte[fileInputStream.available()];
+        fileInputStream.read(data);
+        fileInputStream.close();
+        List<Byte> list=new ArrayList<>();
+        for(int i=0;i<data.length;i++)
+            list.add(data[i]);
+        return list;
     }
 
 }
