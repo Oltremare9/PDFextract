@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/Explorationoffinancialtheory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/GuizhouFinanceUniversity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JournalofShanghaiUniversityofFinanceandEconomics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/SouthFinance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/WuhanFinance.java" afterDir="false" />
+    <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="将引言换成了正文的提取 所有文章采取标题作者匹配但是存在长度小于3的标题名导致bug">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/fontbox_2_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/opencv_347.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/pdfbox_2_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/commons-logging-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/fontbox-2.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/libopencv_java347.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/opencv-347.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/pdfbox-2.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/ImageViewer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/CSV/WriteCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/CSV/WriteCSV.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/AllMagazines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/AllMagazines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ContemporaryFinanceEconomics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ContemporaryFinanceEconomics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ExtractFromDifMagazines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ExtractFromDifMagazines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinanceAndEconomics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinanceAndEconomics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinanceTheortAndPractice_Caijing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinanceTheortAndPractice_Caijing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinanceTheoryAndPractice_Jinrong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinanceTheoryAndPractice_Jinrong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinancialEconomicsResearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/FinancialEconomicsResearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/HaerbinFinanceUniversitu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/HaerbinFinanceUniversitu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/HainanFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/HainanFinance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JiangxiFinanceUniversity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JiangxiFinanceUniversity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JournalofCentralUniversityofFinanceandEconomics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JournalofCentralUniversityofFinanceandEconomics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JournalofHenanFinanceTaxationCollege.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JournalofTianjinUniversityofFinanceandEconomics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/JournalofTianjinUniversityofFinanceandEconomics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/LocalFinanceResearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/LocalFinanceResearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/QinghaiFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/QinghaiFinance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ResearchonInternationalFinancialandEconomic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ResearchonInternationalFinancialandEconomic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ShanghaiFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Magazines/ShanghaiFinance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/CSV/ReadCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/CSV/ReadCSV.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/CSV/WriteCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/CSV/WriteCSV.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/AllMagazines.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/AllMagazines.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/CollectedEssaysonFinanceandEconomics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/CollectedEssaysonFinanceandEconomics.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ContemporaryFinanceEconomics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ContemporaryFinanceEconomics.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ExtractFromDifMagazines.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ExtractFromDifMagazines.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/FinanceAndEconomics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/FinanceAndEconomics.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/FinanceTheortAndPractice_Caijing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/FinanceTheortAndPractice_Caijing.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/FinanceTheoryAndPractice_Jinrong.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/FinanceTheoryAndPractice_Jinrong.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/JiangxiFinanceUniversity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/JiangxiFinanceUniversity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/NorthEastFinanceUniversity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/NorthEastFinanceUniversity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ResearchonFinancialDevelopment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ResearchonFinancialDevelopment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ResearchonFinancialandEconomicIssues.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ResearchonFinancialandEconomicIssues.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ResearchonInternationalFinancialandEconomic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/ResearchonInternationalFinancialandEconomic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/SecuritiesMarketHerald.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/Magazines/SecuritiesMarketHerald.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SimplyToTxt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SimplyToTxt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/exeFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/exeFile.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,14 +95,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/pdfbox-2.0.1.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="project.structure.side.proportion" value="0.34743473" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="extractPDF.openCV" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LDA\PDFextract\libs" />
       <recent name="D:\LDA\PDFextract\src\main\java" />
     </key>
   </component>
@@ -118,7 +122,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ShowUI">
+  <component name="RunManager" selected="Application.CurrentPDFOperation">
+    <configuration name="CurrentPDFOperation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="13" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="extractPDF.openCV.CurrentPDFOperation" />
+      <module name="PDFextract" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=D:\opencv\opencv\build\java\x64" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="extractPDF.openCV.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShowUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="extractPDF.UI.ShowUI" />
       <module name="PDFextract" />
@@ -145,8 +165,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CurrentPDFOperation" />
+      <item itemvalue="Application.exeFile" />
+      <item itemvalue="Application.ShowUI" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CurrentPDFOperation" />
         <item itemvalue="Application.ShowUI" />
         <item itemvalue="Application.exeFile" />
       </list>
@@ -183,6 +209,12 @@
       <workItem from="1578036040292" duration="430000" />
       <workItem from="1578130347851" duration="5323000" />
       <workItem from="1578293612987" duration="13398000" />
+      <workItem from="1578387767214" duration="196000" />
+      <workItem from="1578455685371" duration="2200000" />
+      <workItem from="1578621915488" duration="2968000" />
+      <workItem from="1580986389702" duration="2176000" />
+      <workItem from="1581342467102" duration="685000" />
+      <workItem from="1581420895181" duration="14133000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -331,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578036277641</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="将引言换成了正文的提取 所有文章采取标题作者匹配但是存在长度小于3的标题名导致bug">
+      <created>1578387886255</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1578387886255</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +409,8 @@
     <MESSAGE value="新增湖南税务高等专科学校学报 1300篇 测试allMagazine基本可用" />
     <MESSAGE value="整合长春金融高等专科学校学报,湖南税务高等专科学校学报,河南财政税务高等专科学校学报, 4k篇 修改allMagazine最后一条引文的问题，下一步考虑改变switch case结构" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="将引言换成了正文的提取 所有文章采取标题作者匹配但是存在长度小于3的标题名导致bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="将引言换成了正文的提取 所有文章采取标题作者匹配但是存在长度小于3的标题名导致bug" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

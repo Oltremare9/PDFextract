@@ -8,22 +8,24 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class AllMagazines {
-    public static int num=0;
+    public static int num = 0;
     private String title;
     private String author;
-    private void  match(File file) throws IOException {
-        String parent=file.getParent();
-        int index=parent.lastIndexOf("\\");
-        parent=parent.substring(index+1);
-        String res[]=new String[2];
-        String filename=file.getName();
-        filename.substring(0,filename.length()-4);
-        index=filename.lastIndexOf("_");
-        String aut=filename.substring(index+1,filename.length()-4);
-        filename=filename.substring(0,index);
-        filename=filename.replaceAll("_","");
+
+    private void match(File file) throws IOException {
+        String parent = file.getParent();
+        int index = parent.lastIndexOf("\\");
+        parent = parent.substring(index + 1);
+        String res[] = new String[2];
+        String filename = file.getName();
+        filename.substring(0, filename.length() - 4);
+        index = filename.lastIndexOf("_");
+        String aut = filename.substring(index + 1, filename.length() - 4);
+        filename = filename.substring(0, index);
+        filename = filename.replaceAll("_", "");
 
 //        if(filename.contains("省略")) {
+        if (filename.length() > 5) {
             filename = filename.replaceAll("省略", "");
 
             String first = filename.substring(0, 3);
@@ -38,11 +40,12 @@ public class AllMagazines {
             }
             title = res[0];
             author = res[1];
-//        }else{
-//            title=filename;
-//            author=aut;
-//        }
+        } else {
+            title = filename;
+            author = aut;
+        }
     }
+
     public String extractTitle(File file) throws IOException {
         /*
         String res = "";
@@ -139,8 +142,8 @@ public class AllMagazines {
                             break;
                     }
                     res = res.substring(4, res.length());
-                    if(res.startsWith("]")||res.startsWith("〕"))
-                        res=res.substring(1);
+                    if (res.startsWith("]") || res.startsWith("〕"))
+                        res = res.substring(1);
 //                    System.out.println(res);
                     break;
                 }
@@ -185,8 +188,8 @@ public class AllMagazines {
 //        return res.substring(3);
         if (res.length() > 3)
             res = res.substring(3);
-        if(res.startsWith("]")||res.startsWith("〕"))
-            res=res.substring(1);
+        if (res.startsWith("]") || res.startsWith("〕"))
+            res = res.substring(1);
         return res;
     }
 
@@ -207,7 +210,7 @@ public class AllMagazines {
                     }
                     String str[] = res.split("\\[\\d+\\]");
                     for (int i = 0; i < str.length - 1; i++) {
-                        if (str[i].equals("")||str[i].length()>100||str[i].length()<10)
+                        if (str[i].equals("") || str[i].length() > 100 || str[i].length() < 10)
                             continue;
                         if (!str[i].startsWith("•")) {
 //                            System.out.println(str[i]);
@@ -264,9 +267,9 @@ public class AllMagazines {
                     resstr = resstr.substring(0, index - 1);
 //                    System.out.println(resstr);
                 }
-                result.remove(result.size()-1);
+                result.remove(result.size() - 1);
                 result.add(resstr);
-                num+=result.size();
+                num += result.size();
 
             }
             //删除过长的引文
@@ -295,20 +298,20 @@ public class AllMagazines {
             String s = "";
             BufferedReader re = new BufferedReader(new FileReader(file));
             while ((s = re.readLine()) != null) {
-                if(s.contains("中图"))
+                if (s.contains("中图"))
                     break;
             }
             while ((s = re.readLine()) != null) {
                 s = CharMatcher.WHITESPACE.trimFrom(s);
                 s = CharMatcher.WHITESPACE.replaceFrom(s, "");
-                if(s.contains("参考文献")||s.contains("责任编辑"))
+                if (s.contains("参考文献") || s.contains("责任编辑"))
                     break;
-                else if (s.contains("表\\d")||s.contains("图\\d")||s.contains("作者简介")||
-                        s.contains("DOI")||s.contains("关键词")||s.contains("中图")
-                        ||s.contains("基金")||s.contains("收稿"))  {
+                else if (s.contains("表\\d") || s.contains("图\\d") || s.contains("作者简介") ||
+                        s.contains("DOI") || s.contains("关键词") || s.contains("中图")
+                        || s.contains("基金") || s.contains("收稿")) {
                     continue;
-                }else{
-                    res+=s;
+                } else {
+                    res += s;
                 }
 
             }
@@ -316,6 +319,7 @@ public class AllMagazines {
         }
         return res;
     }
+
     public String extractForeword(File file) throws IOException {
         String res = "";
         if (file.isFile()) {
@@ -329,7 +333,7 @@ public class AllMagazines {
                     while ((s = re.readLine()) != null) {
                         s = CharMatcher.WHITESPACE.trimFrom(s);
                         s = CharMatcher.WHITESPACE.replaceFrom(s, "");
-                        if (!s.contains("二、")||!s.contains("一"))
+                        if (!s.contains("二、") || !s.contains("一"))
                             res += s;
                         else
                             break;
@@ -343,19 +347,20 @@ public class AllMagazines {
         }
         return res;
     }
-    protected ArrayList<String> removeExtraAuthor(ArrayList<String> list){
-        if(list.size()>0){
-            String str=list.get(list.size()-1);
-            int index=str.indexOf("责任");
-            int index2=str.indexOf("作者");
-            if(index!=-1 && index2!=-1 )
-                index= Math.min(index,index2);
-            else if (index!=-1 || index2!=-1)
-                index= Math.max(index,index2);
-            if(index!=-1){
-                str=str.substring(0,index);
+
+    protected ArrayList<String> removeExtraAuthor(ArrayList<String> list) {
+        if (list.size() > 0) {
+            String str = list.get(list.size() - 1);
+            int index = str.indexOf("责任");
+            int index2 = str.indexOf("作者");
+            if (index != -1 && index2 != -1)
+                index = Math.min(index, index2);
+            else if (index != -1 || index2 != -1)
+                index = Math.max(index, index2);
+            if (index != -1) {
+                str = str.substring(0, index);
             }
-            list.remove(list.size()-1);
+            list.remove(list.size() - 1);
             list.add(str);
         }
         return list;
