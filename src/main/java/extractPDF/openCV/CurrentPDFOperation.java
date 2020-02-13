@@ -22,24 +22,23 @@ import java.util.List;
 import java.util.Map;
 
 import static extractPDF.openCV.OpenCVOperation.*;
-import static extractPDF.util.FileOperation.convertFileToByteList;
-import static extractPDF.util.FileOperation.deleteFiles;
 
 public class CurrentPDFOperation {
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
-    static final String pngOutPath="D:\\LDA\\result_output\\pngOutPath\\";
+
+    static final String pngOutPath = "D:\\LDA\\result_output\\pngOutPath\\";
 
     /**
-    * @Description: 输入pdf以及对应的参数 （对于pdf本身的） 画出线并存储在pngOutPath中
-    * @Param: [file, rect]
-    * @return: void
-    * @Author: whn
-    * @Date: 2020/2/11
-    */
-    public static void showCurrentLine(File file,Rectangle rect) throws IOException {
-        PDDocument pdDocument= null;
+     * @Description: 输入pdf以及对应的参数 （对于pdf本身的） 画出线并存储在pngOutPath中
+     * @Param: [file, rect]
+     * @return: void
+     * @Author: whn
+     * @Date: 2020/2/11
+     */
+    public static void showCurrentLine(File file, Rectangle rect) throws IOException {
+        PDDocument pdDocument = null;
         try {
             pdDocument = PDDocument.load(file);
         } catch (IOException e) {
@@ -47,46 +46,46 @@ public class CurrentPDFOperation {
         }
         PDPage pdPage = pdDocument.getPage(0);
         PDFRenderer renderer = new PDFRenderer(pdDocument);
-        for(int i=0;i<pdDocument.getNumberOfPages();i++){
-            float currentWidth=pdPage.getMediaBox().getWidth();
-            float currentHeight=pdPage.getMediaBox().getHeight();
+        for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
+            float currentWidth = pdPage.getMediaBox().getWidth();
+            float currentHeight = pdPage.getMediaBox().getHeight();
             BufferedImage image = null;
             try {
                 image = renderer.renderImage(i, 3f);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            int imageWidth=image.getWidth();
-            int imageHeight=image.getHeight();
+            int imageWidth = image.getWidth();
+            int imageHeight = image.getHeight();
             Graphics g = image.getGraphics();
-            float r= currentWidth/imageWidth;
+            float r = currentWidth / imageWidth;
             g.setColor(Color.RED);//画笔颜色
-            g.drawRect((int)(rect.x/r),(int)(rect.y/r),(int)(rect.width/r),(int)(rect.height/r));
+            g.drawRect((int) (rect.x / r), (int) (rect.y / r), (int) (rect.width / r), (int) (rect.height / r));
 
             //原文件绝对目录
-            String absPath=file.getAbsolutePath();
+            String absPath = file.getAbsolutePath();
             //原文件文件名
-            String filename=file.getName();
+            String filename = file.getName();
             //上一级目录名 期刊名+年
             String magYear;
-            int index=absPath.lastIndexOf("\\");
-            absPath=absPath.substring(0,index);
-            index=absPath.lastIndexOf("\\");
-            magYear=absPath.substring(index+1);
+            int index = absPath.lastIndexOf("\\");
+            absPath = absPath.substring(0, index);
+            index = absPath.lastIndexOf("\\");
+            magYear = absPath.substring(index + 1);
             //期刊名
-            absPath=absPath.substring(0,index);
-            index=absPath.lastIndexOf("\\");
-            String mag=absPath.substring(index+1);
-            String res=pngOutPath + mag+"\\"+magYear+"\\"+filename.substring(0,filename.length()-4)
-                    +"\\";
-            File dstFile=new File(res);
-            if(!dstFile.exists()) {
+            absPath = absPath.substring(0, index);
+            index = absPath.lastIndexOf("\\");
+            String mag = absPath.substring(index + 1);
+            String res = pngOutPath + mag + "\\" + magYear + "\\" + filename.substring(0, filename.length() - 4)
+                    + "\\";
+            File dstFile = new File(res);
+            if (!dstFile.exists()) {
                 dstFile.mkdirs();
                 dstFile.createNewFile();
             }
             FileOutputStream out = null;//输出图片的地址
             try {
-                out = new FileOutputStream(res+i+".png");
+                out = new FileOutputStream(res + i + ".png");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -100,30 +99,28 @@ public class CurrentPDFOperation {
     }
 
 
-    
-    
     /**
-    * @Description: 输入pdf路径 返回上下切线对于图片的位置
-    * @Param: [path]
-    * @return: java.util.List<java.lang.Integer>
-    * @Author: whn
-    * @Date: 2020/2/11
-    */
+     * @Description: 输入pdf路径 返回上下切线对于图片的位置
+     * @Param: [path]
+     * @return: java.util.List<java.lang.Integer>
+     * @Author: whn
+     * @Date: 2020/2/11
+     */
     //切分临时图片位置
-    static final String tempSplitPath="D:\\LDA\\runnning_output\\tempSplitPng\\";
+    static final String tempSplitPath = "D:\\LDA\\runnning_output\\tempSplitPng\\";
     //拆分图片dpi
-    static final int dpi=250;
-    
+    static final int dpi = 250;
+
     public static List<Integer> getPageRectangle(File pdfFile) throws IOException {
 
 //        deleteFiles(tempSplitPath);
-        String returnPath=pdf2Image(pdfFile,tempSplitPath,dpi);
+        String returnPath = pdf2Image(pdfFile, tempSplitPath, dpi);
 //        List<Byte> lis=convertFileToByteList(returnPath+"temp_1.png");
-        Mat image= inputStream2Mat(returnPath+"temp_1.png");
+        Mat image = inputStream2Mat(returnPath + "temp_1.png");
 //        Mat image = Imgcodecs.imread(returnPath+"temp_1.png");
-        List<Integer> list= new ArrayList<>();
-        list.add(0,image.width());
-        list.add(1,image.height());
+        List<Integer> list = new ArrayList<>();
+        list.add(0, image.width());
+        list.add(1, image.height());
 
         System.out.println(image.width() + "  " + image.height());
         Mat visualImage = image.clone();
@@ -153,56 +150,56 @@ public class CurrentPDFOperation {
                     top = rect.y;
             }
         }
-        list.add(2,top);
-        list.add(3,bottom);
+        list.add(2, top);
+        list.add(3, bottom);
 
 //        Mat testImage = new Mat(visualImage, Imgproc.boundingRect(contours.get(1)));
-        showImg(visualImage);
+//        showImg(visualImage);
         return list;
     }
 
     /**
-    * @Description: 将图片坐标 转换为对应的pdf坐标
-    * @Param: [pdfFile, currentPos]
-    * @return: java.awt.Rectangle
-    * @Author: whn
-    * @Date: 2020/2/11
-    */
-    public static Rectangle transferToRect(File pdfFile,List<Integer> currentPos) throws IOException {
-        PDDocument document=PDDocument.load(pdfFile);
-        PDPage page=document.getPage(0);
+     * @Description: 将图片坐标 转换为对应的pdf坐标
+     * @Param: [pdfFile, currentPos]
+     * @return: java.awt.Rectangle
+     * @Author: whn
+     * @Date: 2020/2/11
+     */
+    public static Rectangle transferToRect(File pdfFile, List<Integer> currentPos) throws IOException {
+        PDDocument document = PDDocument.load(pdfFile);
+        PDPage page = document.getPage(0);
         //目标坐标
-        float width=page.getMediaBox().getWidth();
-        float height=page.getMediaBox().getHeight();
+        float width = page.getMediaBox().getWidth();
+        float height = page.getMediaBox().getHeight();
         //当前坐标
-        int curWidth=currentPos.get(0);
-        int curHeight=currentPos.get(1);
-        int top=currentPos.get(2);
-        int bottom=currentPos.get(3);
+        int curWidth = currentPos.get(0);
+        int curHeight = currentPos.get(1);
+        int top = currentPos.get(2);
+        int bottom = currentPos.get(3);
         //计算当前坐标形成的rect
-        int x=0;
-        int y=top;
-        int w=curWidth;
-        int h=bottom-top;
+        int x = 0;
+        int y = top;
+        int w = curWidth;
+        int h = bottom - top;
         //计算比例
-        float ratio=width/curWidth;
+        float ratio = width / curWidth;
         //形成rect
-        Rectangle rect=new Rectangle((int)(x*ratio),(int)(y*ratio),(int)(w*ratio),(int)(h*ratio));
+        Rectangle rect = new Rectangle((int) (x * ratio), (int) (y * ratio), (int) (w * ratio), (int) (h * ratio));
         return rect;
     }
-    
-    public static void  main(String args[]) throws IOException {
-        //获取切割之后的图片坐标
-        File file=new File("D:\\LDA\\金融论文\\贵州财经大学学报\\贵州财经大学学报2012\\" +
-                "财政转型_以_有形之手_促进科学发展_武力.pdf");
-        List list=getPageRectangle(file);
 
-        //转换为pdf内坐标
-
-            Rectangle rect=transferToRect(file,list);
-
-        
+//    public static void main(String args[]) throws IOException {
+//        //获取切割之后的图片坐标
+//        File file = new File("D:\\LDA\\金融论文\\贵州财经大学学报\\贵州财经大学学报2012\\" +
+//                "财政转型_以_有形之手_促进科学发展_武力.pdf");
+//        List list = getPageRectangle(file);
 //
-        showCurrentLine(file,rect);
-    }
+//        //转换为pdf内坐标
+//
+//        Rectangle rect = transferToRect(file, list);
+//
+//
+////
+//        showCurrentLine(file, rect);
+//    }
 }

@@ -2,11 +2,13 @@ package extractPDF;
 
 import com.csvreader.CsvReader;
 import extractPDF.CSV.WriteCSV;
+import extractPDF.openCV.CurrentPDFOperation;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.List;
 
 public class SwitchPDF {
 
@@ -14,33 +16,39 @@ public class SwitchPDF {
 
     public static void choose(File file, String out) throws IOException {
 
-        String parentName = file.getParent();
-        int index = parentName.lastIndexOf("\\");
-        parentName = parentName.substring(index + 1);
-        String mag = parentName.substring(0, parentName.length() - 4);
-        String ruleyear=parentName.substring(parentName.length()-4);
+
         Rectangle rect = null;
+        List list= CurrentPDFOperation.getPageRectangle(file);
+        rect = CurrentPDFOperation.transferToRect(file, list);
+        CurrentPDFOperation.showCurrentLine(file,rect);
+        SimplyToTxt.commonToTxt(file, out, rect);
 
         //从文件中读取
-        CsvReader csvReader=new CsvReader("D:\\extract.csv",',', Charset.forName("utf-8"));
-        while(csvReader.readRecord()){
-            String str=csvReader.get(0);
-            String title=str.substring(0,str.length()-4);
-            String year=str.substring(str.length()-4);
 
-            System.out.println(title.equals(mag));
-            if(title.equals(mag)){
-                if(Integer.parseInt(ruleyear)<=Integer.parseInt(year)){
-                    int x=Integer.parseInt(csvReader.get(1));
-                    int y=Integer.parseInt(csvReader.get(2));
-                    int width=Integer.parseInt(csvReader.get(3));
-                    int height=Integer.parseInt(csvReader.get(4));
-                    rect=new Rectangle(x,y,width,height);
-                    SimplyToTxt.commonToTxt(file, out, rect);
-                    break;
-                }
-            }
-        }
+//        String parentName = file.getParent();
+//        int index = parentName.lastIndexOf("\\");
+//        parentName = parentName.substring(index + 1);
+//        String mag = parentName.substring(0, parentName.length() - 4);
+//        String ruleyear=parentName.substring(parentName.length()-4);
+//        CsvReader csvReader=new CsvReader("D:\\extract.csv",',', Charset.forName("utf-8"));
+//        while(csvReader.readRecord()){
+//            String str=csvReader.get(0);
+//            String title=str.substring(0,str.length()-4);
+//            String year=str.substring(str.length()-4);
+//
+//            System.out.println(title.equals(mag));
+//            if(title.equals(mag)){
+//                if(Integer.parseInt(ruleyear)<=Integer.parseInt(year)){
+//                    int x=Integer.parseInt(csvReader.get(1));
+//                    int y=Integer.parseInt(csvReader.get(2));
+//                    int width=Integer.parseInt(csvReader.get(3));
+//                    int height=Integer.parseInt(csvReader.get(4));
+//                    rect=new Rectangle(x,y,width,height);
+//                    SimplyToTxt.commonToTxt(file, out, rect);
+//                    break;
+//                }
+//            }
+//        }
 
 
 

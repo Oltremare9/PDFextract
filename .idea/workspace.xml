@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/exeFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/extractPDF/exeFile.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +49,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -64,11 +70,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/pdfbox-2.0.1.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.34743473" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -91,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CurrentPDFOperation">
+  <component name="RunManager" selected="Application.ShowUI">
     <configuration name="CurrentPDFOperation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="13" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -141,8 +148,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CurrentPDFOperation" />
         <item itemvalue="Application.ShowUI" />
+        <item itemvalue="Application.CurrentPDFOperation" />
         <item itemvalue="Application.exeFile" />
       </list>
     </recent_temporary>
@@ -184,6 +191,10 @@
       <workItem from="1580986389702" duration="2176000" />
       <workItem from="1581342467102" duration="685000" />
       <workItem from="1581420895181" duration="19504000" />
+      <workItem from="1581505494915" duration="1212000" />
+      <workItem from="1581593217301" duration="1992000" />
+      <workItem from="1581597419590" duration="1026000" />
+      <workItem from="1581598461561" duration="5280000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>

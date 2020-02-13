@@ -16,6 +16,7 @@ import java.nio.charset.Charset;
 import static extractPDF.exeFile.extractFile;
 import static extractPDF.exeFile.readFile;
 
+
 public class ShowUI {
     private static int type = -1;
     private static String pdfURL = "";
@@ -223,33 +224,54 @@ public class ShowUI {
                             JOptionPane.showMessageDialog(null, "没有选择路径",
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
+                            long start = System.currentTimeMillis();
                             readFile(pdfURL, txtURL);
                             JOptionPane.showMessageDialog(null, "处理完成",
                                     "完成", JOptionPane.INFORMATION_MESSAGE);
+                            long end = System.currentTimeMillis();
+                            System.out.println("start time:" + start +
+                                    "; end time:" + end +
+                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
+                                    + (end - start) / 60000 + "（mins）"
+                                    + ((end - start) / 1000) % 60 + "s");
                         }
 
                         break;
                     case 2:
-                        if (pdfURL.length() == 0 || txtURL.length() == 0 ||excelURL.length()==0) {
+                        if (pdfURL.length() == 0 || txtURL.length() == 0 || excelURL.length() == 0) {
                             JOptionPane.showMessageDialog(null, "没有选择路径",
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
+                            long start = System.currentTimeMillis();
                             readFile(pdfURL, txtURL);
-                            WriteCSV writeCSV1 = new WriteCSV(excelURL+"\\res.xls");
+                            WriteCSV writeCSV1 = new WriteCSV(excelURL + "\\res.xls");
                             extractFile(txtURL, writeCSV1);
                             writeCSV1.write();
                             writeCSV1.close();
+                            long end = System.currentTimeMillis();
+                            System.out.println("start time:" + start +
+                                    "; end time:" + end +
+                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
+                                    + (end - start) / 60000 + "（mins）"
+                                    + ((end - start) / 1000) % 60 + "s");
                         }
                         break;
                     case 3:
-                        if (txtURL.length() == 0 ||excelURL.length()==0) {
+                        if (txtURL.length() == 0 || excelURL.length() == 0) {
                             JOptionPane.showMessageDialog(null, "没有选择路径",
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
-                            WriteCSV writeCSV2 = new WriteCSV(excelURL+"\\res.xls");
+                            long start = System.currentTimeMillis();
+                            WriteCSV writeCSV2 = new WriteCSV(excelURL + "\\res.xls");
                             extractFile(txtURL, writeCSV2);
                             writeCSV2.write();
                             writeCSV2.close();
+                            long end = System.currentTimeMillis();
+                            System.out.println("start time:" + start +
+                                    "; end time:" + end +
+                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
+                                    + (end - start) / 60000 + "（mins）"
+                                    + ((end - start) / 1000) % 60 + "s");
                         }
                         break;
                 }

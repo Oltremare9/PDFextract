@@ -20,6 +20,8 @@ public class exeFile {
                         readFile(file2.getAbsolutePath(),out);
 
                     } else {
+                        if(file2.getName().length()<10)
+                            continue;
 //                        System.out.println("文件:" + file2.getAbsolutePath());
 //                        System.out.println("文件:" + file2.getName());
                         String parentName = file2.getParent();
