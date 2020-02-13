@@ -6,17 +6,18 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SimplyToTxt {
     //提取对用过滤区域的文本 使用rectangle来控制对应区域
-    static void toText(File file, String out, Rectangle rec, int start, int end) throws IOException {
+    static void toText(File file, String out, List<Rectangle> rec, int start, int end) throws IOException {
         if (file.isFile()) {
             PDDocument document = PDDocument.load(file);
             int pageAmount = document.getNumberOfPages();
             PDFTextStripperByArea stripper = new PDFTextStripperByArea();
 //                Rectangle rect = new Rectangle(0, 80, 2000, 200);
-            Rectangle rect = rec;
-            stripper.addRegion("head", rect);
+
             String cut = "";
             System.out.println(file.getName());
             if (pageAmount >= 3) {
@@ -24,6 +25,8 @@ public class SimplyToTxt {
 //                for (int page = 0; page < 1; page++)
                     System.out.println(page);
                     try {
+                        Rectangle rect = rec.get(page);
+                        stripper.addRegion("head", rect);
                         stripper.extractRegions(document.getPage(page));
                     }
                     catch (Exception e){
@@ -61,25 +64,25 @@ public class SimplyToTxt {
         }
     }
 
-    public static void topToTxt(File file, String out) {
-        Rectangle rect = new Rectangle(0, 80, 2000, 400);
-        try {
-            toText(file, out, rect, 0, 1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void topToTxt(File file, String out) {
+//        Rectangle rect = new Rectangle(0, 80, 2000, 400);
+//        try {
+//            toText(file, out, rect, 0, 1);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    public static void bottomToTxt(File file, String out) {
-        Rectangle rect = new Rectangle(0, 400, 2000, 1000);
-        try {
-            toText(file, out, rect, 0, Integer.MAX_VALUE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void bottomToTxt(File file, String out) {
+//        Rectangle rect = new Rectangle(0, 400, 2000, 1000);
+//        try {
+//            toText(file, out, rect, 0, Integer.MAX_VALUE);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    public static void commonToTxt(File file, String out,Rectangle rectangle) {
+    public static void commonToTxt(File file, String out, List<Rectangle> rectangle) {
         try {
             //过滤重复pdf文件
             String name=file.getName();

@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/flexCompiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/guava_19_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jxl.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/.idea/extractPDF.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/fontbox_2_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/pdfbox_2_0_1.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/MagazineName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/MagazineName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SimplyToTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SimplyToTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchMag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchMag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SimplyToTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SimplyToTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SimplyToTxt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchMag.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/SwitchPDF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/extractPDF/exeFile.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +36,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -210,7 +196,7 @@
       <workItem from="1581593217301" duration="1992000" />
       <workItem from="1581597419590" duration="1026000" />
       <workItem from="1581598461561" duration="6838000" />
-      <workItem from="1581608276873" duration="3708000" />
+      <workItem from="1581608276873" duration="10238000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -380,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581606247204</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="识别rect但是仅通过第一页存在不标准（考虑结合文件流） 临时文件输出至硬盘 速度较慢">
+      <created>1581612789535</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1581612789535</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,15 +415,16 @@
     <MESSAGE value="将引言换成了正文的提取 所有文章采取标题作者匹配但是存在长度小于3的标题名导致bug" />
     <MESSAGE value="识别rect但是仅通过第一页存在不标准 文件路径重定向 所有文章采取标题作者匹配但是存在长度小于3的标题名导致bug" />
     <MESSAGE value="识别rect但是仅通过第一页存在不标准 文件路径重定向 速度较慢" />
-    <option name="LAST_COMMIT_MESSAGE" value="识别rect但是仅通过第一页存在不标准 文件路径重定向 速度较慢" />
+    <MESSAGE value="识别rect但是仅通过第一页存在不标准（考虑结合文件流） 临时文件输出至硬盘 速度较慢" />
+    <option name="LAST_COMMIT_MESSAGE" value="识别rect但是仅通过第一页存在不标准（考虑结合文件流） 临时文件输出至硬盘 速度较慢" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java</url>
-          <line>227</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

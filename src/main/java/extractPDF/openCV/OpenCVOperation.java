@@ -1,5 +1,6 @@
 package extractPDF.openCV;
 
+import extractPDF.config;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
@@ -85,27 +86,13 @@ public class OpenCVOperation {
 
 
     public static String pdf2Image(File pdfFile, String dstImgFolder, int dpi) {
-        //原文件绝对目录
-        String absPath=pdfFile.getAbsolutePath();
-        //原文件文件名
-        String filename=pdfFile.getName();
-        //上一级目录名 期刊名+年
-        String magYear;
-        int index=absPath.lastIndexOf("\\");
-        absPath=absPath.substring(0,index);
-        index=absPath.lastIndexOf("\\");
-        magYear=absPath.substring(index+1);
-        //期刊名
-        absPath=absPath.substring(0,index);
-        index=absPath.lastIndexOf("\\");
-        String mag=absPath.substring(index+1);
+
 
         File file = pdfFile;
         PDDocument pdDocument;
         String res="";
         try {
             String imagePDFName = "temp"; // 获取图片文件名
-            String imgFolderPath = dstImgFolder;
 
             pdDocument = PDDocument.load(file);
             PDFRenderer renderer = new PDFRenderer(pdDocument);
@@ -115,10 +102,8 @@ public class OpenCVOperation {
 //            if (pdDocument.getNumberOfPages() > 2) {
 //                Integer i = 1;
                 System.out.println("正在转换第" + i + "页");
-                res=imgFolderPath + mag+"\\"+magYear+"\\"+filename.substring(0,filename.length()-4)
-                        +"\\";
-                String imgFilePathPrefix = imgFolderPath + mag+"\\"+magYear+"\\"+filename.substring(0,filename.length()-4)
-                        +"\\"+ imagePDFName;
+                res= config.getPngTempPath(file);
+                String imgFilePathPrefix = res+ imagePDFName;
                 imgFilePath = new StringBuffer();
                 imgFilePath.append(imgFilePathPrefix);
                 imgFilePath.append("_");

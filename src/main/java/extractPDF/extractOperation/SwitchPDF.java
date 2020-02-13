@@ -1,12 +1,15 @@
 package extractPDF.extractOperation;
 
 import extractPDF.CSV.WriteCSV;
+import extractPDF.config;
 import extractPDF.openCV.CurrentPDFOperation;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+
+import static extractPDF.openCV.OpenCVOperation.pdf2Image;
 
 public class SwitchPDF {
 
@@ -14,12 +17,41 @@ public class SwitchPDF {
 
     public static void choose(File file, String out) throws IOException {
 
-
-        Rectangle rect = null;
-        List list= CurrentPDFOperation.getPageRectangle(file);
-        rect = CurrentPDFOperation.transferToRect(file, list);
-        CurrentPDFOperation.showCurrentLine(file,rect);
-        SimplyToTxt.commonToTxt(file, out, rect);
+        String outPath=config.getPngPath(file);
+        String tempPath=config.getPngTempPath(file);
+        List<Rectangle> res = new ArrayList<>();
+        File f0=new File(tempPath+"temp_1.png");
+        File f1=new File(outPath+"config.txt");
+        //如果存在切割图片 无须切割
+        if(!f0.exists())
+            pdf2Image(file, config.tempSplitPath, config.dip);
+        //如果不存在配置文件 解析rectangle并写入
+        if(!f1.exists()) {
+            List list = CurrentPDFOperation.getPageRectangle(file);
+            res = CurrentPDFOperation.transferToRect(file, list);
+            new File(outPath).mkdirs();
+            f1.createNewFile();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f1));
+            for(int j=0;j<res.size();j++){
+                Rectangle rect=res.get(j);
+                writer.write(rect.x+","+rect.y+","+rect.width+","+rect.height+"\n");
+            }
+            writer.flush();
+            writer.close();
+        }else//存在则直接读取
+            {
+            int line=0;
+            BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(f1)));
+            String text=null;
+            while((text=reader.readLine())!=null){
+                String str[]=text.split(",");
+                res.add(line++,new Rectangle(Integer.parseInt(str[0]),Integer.parseInt(str[1]),
+                        Integer.parseInt(str[2]),Integer.parseInt(str[3])));
+            }
+            reader.close();
+        }
+        CurrentPDFOperation.showCurrentLine(file,res);
+        SimplyToTxt.commonToTxt(file, out, res);
 
         //从文件中读取
 
