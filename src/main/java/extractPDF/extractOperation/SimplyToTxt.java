@@ -1,4 +1,4 @@
-package extractPDF;
+package extractPDF.extractOperation;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 

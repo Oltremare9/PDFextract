@@ -111,9 +111,9 @@ public class OpenCVOperation {
             PDFRenderer renderer = new PDFRenderer(pdDocument);
             /* dpi越大转换后越清晰，相对转换速度越慢 */
             StringBuffer imgFilePath = null;
-//            for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
-            if (pdDocument.getNumberOfPages() > 2) {
-                Integer i = 1;
+            for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
+//            if (pdDocument.getNumberOfPages() > 2) {
+//                Integer i = 1;
                 System.out.println("正在转换第" + i + "页");
                 res=imgFolderPath + mag+"\\"+magYear+"\\"+filename.substring(0,filename.length()-4)
                         +"\\";

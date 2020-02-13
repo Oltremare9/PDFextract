@@ -1,4 +1,4 @@
-package extractPDF;
+package extractPDF.extractOperation;
 
 enum MagazineName {
     //

@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="fontbox-2.0.1">
+  <library name="guava-19.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/fontbox-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/guava-19.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

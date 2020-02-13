@@ -28,7 +28,9 @@ public class CurrentPDFOperation {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    static final String pngOutPath = "D:\\LDA\\result_output\\pngOutPath\\";
+    static final String pngOutPath = "F:\\LDA\\result_output\\pngOutPath\\";
+//    static final String pngOutPath = "D:\\LDA\\result_output\\pngOutPath\\";
+
 
     /**
      * @Description: 输入pdf以及对应的参数 （对于pdf本身的） 画出线并存储在pngOutPath中
@@ -107,7 +109,8 @@ public class CurrentPDFOperation {
      * @Date: 2020/2/11
      */
     //切分临时图片位置
-    static final String tempSplitPath = "D:\\LDA\\runnning_output\\tempSplitPng\\";
+//    static final String tempSplitPath = "D:\\LDA\\runnning_output\\tempSplitPng\\";//本地
+    static final String tempSplitPath = "F:\\LDA\\runnning_output\\tempSplitPng\\";//移动硬盘
     //拆分图片dpi
     static final int dpi = 250;
 

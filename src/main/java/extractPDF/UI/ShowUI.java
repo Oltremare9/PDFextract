@@ -13,8 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-import static extractPDF.exeFile.extractFile;
-import static extractPDF.exeFile.readFile;
+import static extractPDF.extractOperation.exeFile.extractFile;
+import static extractPDF.extractOperation.exeFile.readFile;
 
 
 public class ShowUI {
@@ -226,16 +226,16 @@ public class ShowUI {
                         } else {
                             long start = System.currentTimeMillis();
                             readFile(pdfURL, txtURL);
-                            JOptionPane.showMessageDialog(null, "处理完成",
-                                    "完成", JOptionPane.INFORMATION_MESSAGE);
                             long end = System.currentTimeMillis();
                             System.out.println("start time:" + start +
                                     "; end time:" + end +
                                     "; Run Time:" + (end - start) / 1000 + "(s)   "
                                     + (end - start) / 60000 + "（mins）"
                                     + ((end - start) / 1000) % 60 + "s");
-                        }
+                            JOptionPane.showMessageDialog(null, "处理完成",
+                                    "完成", JOptionPane.INFORMATION_MESSAGE);
 
+                        }
                         break;
                     case 2:
                         if (pdfURL.length() == 0 || txtURL.length() == 0 || excelURL.length() == 0) {

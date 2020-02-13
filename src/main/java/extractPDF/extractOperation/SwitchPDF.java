@@ -1,13 +1,11 @@
-package extractPDF;
+package extractPDF.extractOperation;
 
-import com.csvreader.CsvReader;
 import extractPDF.CSV.WriteCSV;
 import extractPDF.openCV.CurrentPDFOperation;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.List;
 
 public class SwitchPDF {
