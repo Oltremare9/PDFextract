@@ -1,7 +1,7 @@
 package extractPDF.UI;
 
-import com.csvreader.CsvReader;
 import extractPDF.CSV.WriteCSV;
+import extractPDF.UI.ActionThread.PDF2TXT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,9 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.charset.Charset;
 
 import static extractPDF.extractOperation.exeFile.extractFile;
 import static extractPDF.extractOperation.exeFile.readFile;
@@ -206,9 +203,9 @@ public class ShowUI {
 
         //按钮pannel
         buttons.setLayout(new FlowLayout());
-        JButton submitInfo = new JButton("提交提取规则");
+//        JButton submitInfo = new JButton("提交提取规则");
         JButton extract = new JButton("开始提取");
-        buttons.add(submitInfo);
+//        buttons.add(submitInfo);
         buttons.add(Box.createGlue());
         buttons.add(extract);
         extract.addActionListener(new ActionListener() {
@@ -224,16 +221,20 @@ public class ShowUI {
                             JOptionPane.showMessageDialog(null, "没有选择路径",
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
-                            long start = System.currentTimeMillis();
-                            readFile(pdfURL, txtURL);
-                            long end = System.currentTimeMillis();
-                            System.out.println("start time:" + start +
-                                    "; end time:" + end +
-                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
-                                    + (end - start) / 60000 + "（mins）"
-                                    + ((end - start) / 1000) % 60 + "s");
-                            JOptionPane.showMessageDialog(null, "处理完成",
-                                    "完成", JOptionPane.INFORMATION_MESSAGE);
+
+                            PDF2TXT myThread=new PDF2TXT(pdfURL,txtURL);
+                            Thread thread=new Thread(myThread);
+                            thread.start();
+//                            long start = System.currentTimeMillis();
+//                            readFile(pdfURL, txtURL);
+//                            long end = System.currentTimeMillis();
+//                            System.out.println("start time:" + start +
+//                                    "; end time:" + end +
+//                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
+//                                    + (end - start) / 60000 + "（mins）"
+//                                    + ((end - start) / 1000) % 60 + "s");
+//                            JOptionPane.showMessageDialog(null, "处理完成",
+//                                    "完成", JOptionPane.INFORMATION_MESSAGE);
 
                         }
                         break;
@@ -278,29 +279,29 @@ public class ShowUI {
 
             }
         });
-        submitInfo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    CsvReader csvReader = new CsvReader("D:\\rule.csv", ',', Charset.forName("UTF-8"));
-                    while (csvReader.readRecord()) {
-                        String text = magazine.getText();
-                        String newtitle = text.substring(0, text.length() - 4);
-                        String newyear = text.substring(text.length() - 4);
-                        String str = csvReader.get(0);
-                        String year = str.substring(str.length() - 4);
-                        String title = str.substring(0, str.length() - 4);
-//                        System.out.println(year+"^^"+title);
-
-                    }
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-
-            }
-        });
+//        submitInfo.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                try {
+//                    CsvReader csvReader = new CsvReader("D:\\rule.csv", ',', Charset.forName("UTF-8"));
+//                    while (csvReader.readRecord()) {
+//                        String text = magazine.getText();
+//                        String newtitle = text.substring(0, text.length() - 4);
+//                        String newyear = text.substring(text.length() - 4);
+//                        String str = csvReader.get(0);
+//                        String year = str.substring(str.length() - 4);
+//                        String title = str.substring(0, str.length() - 4);
+////                        System.out.println(year+"^^"+title);
+//
+//                    }
+//                } catch (FileNotFoundException ex) {
+//                    ex.printStackTrace();
+//                } catch (IOException ex) {
+//                    ex.printStackTrace();
+//                }
+//
+//            }
+//        });
 
         JFrame jf = new JFrame("PDF提取工具");
         jf.getContentPane().setLayout(new BoxLayout(jf.getContentPane(), BoxLayout.Y_AXIS));

@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ActionThread/PDF2TXT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SimplyToTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SimplyToTxt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +40,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,7 +49,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -71,7 +76,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/opencv-347.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.34743473" />
@@ -121,7 +126,7 @@
       <module name="PDFextract" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="extractPDF.UI.*" />
+          <option name="PATTERN" value="extractPDF.UI.ActionThread.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -196,7 +201,9 @@
       <workItem from="1581593217301" duration="1992000" />
       <workItem from="1581597419590" duration="1026000" />
       <workItem from="1581598461561" duration="6838000" />
-      <workItem from="1581608276873" duration="10238000" />
+      <workItem from="1581608276873" duration="12774000" />
+      <workItem from="1581653838695" duration="8758000" />
+      <workItem from="1581671087254" duration="938000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -373,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581612789535</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="每个页面的rect都保存在最终结果txt中 临时文件输出至硬盘 opencv反而由于图片色彩的处理 过滤了奇怪字体的英文">
+      <created>1581619508611</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1581619508611</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,18 +430,10 @@
     <MESSAGE value="识别rect但是仅通过第一页存在不标准 文件路径重定向 所有文章采取标题作者匹配但是存在长度小于3的标题名导致bug" />
     <MESSAGE value="识别rect但是仅通过第一页存在不标准 文件路径重定向 速度较慢" />
     <MESSAGE value="识别rect但是仅通过第一页存在不标准（考虑结合文件流） 临时文件输出至硬盘 速度较慢" />
-    <option name="LAST_COMMIT_MESSAGE" value="识别rect但是仅通过第一页存在不标准（考虑结合文件流） 临时文件输出至硬盘 速度较慢" />
+    <MESSAGE value="每个页面的rect都保存在最终结果txt中 临时文件输出至硬盘 opencv反而由于图片色彩的处理 过滤了奇怪字体的英文" />
+    <option name="LAST_COMMIT_MESSAGE" value="每个页面的rect都保存在最终结果txt中 临时文件输出至硬盘 opencv反而由于图片色彩的处理 过滤了奇怪字体的英文" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="index" />

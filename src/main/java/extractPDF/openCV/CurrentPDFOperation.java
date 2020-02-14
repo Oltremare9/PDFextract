@@ -104,6 +104,7 @@ public class CurrentPDFOperation {
             }
 
         }
+        pdDocument.close();
     }
 
 
@@ -165,6 +166,7 @@ public class CurrentPDFOperation {
             Rectangle rectangle = new Rectangle(0, top, rec.width, bottom - top);
             list.add(j + 1, rectangle);
         }
+        pdDocument.close();
 
 //        Mat testImage = new Mat(visualImage, Imgproc.boundingRect(contours.get(1)));
 //        showImg(visualImage);
@@ -202,6 +204,7 @@ public class CurrentPDFOperation {
             Rectangle rect = new Rectangle((int) (x * ratio), (int) (y * ratio), (int) (w * ratio), (int) (h * ratio));
             res.add(j-1,rect);
         }
+        document.close();
         return res;
     }
 

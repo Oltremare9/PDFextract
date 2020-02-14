@@ -115,18 +115,28 @@ public class OpenCVOperation {
                     dstFile.createNewFile();
 
                 }
+                try {
+                    BufferedImage image = renderer.renderImageWithDPI(i, dpi);
+                }
+                catch (Exception e){
+                    break;
+                }
                 BufferedImage image = renderer.renderImageWithDPI(i, dpi);
                 ImageIO.write(image, "png", dstFile);
                 System.out.println("第" + i + "页转换完成");
                 System.out.println("PDF文档转PNG图片成功！");
 //                return imgFilePath.toString();
             }
+            pdDocument.close();
 
         } catch (IOException e) {
             e.printStackTrace();
+
             return res;
+
         }
         return res;
+
     }
 
     public static Mat inputStream2Mat(String path) throws IOException {
@@ -141,6 +151,7 @@ public class OpenCVOperation {
         os.flush();
         os.close();
         bis.close();
+        inputStream.close();
 
         Mat encoded = new Mat(1, os.size(), 0);
         encoded.put(0, 0, os.toByteArray());

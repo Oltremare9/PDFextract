@@ -61,6 +61,7 @@ public class SimplyToTxt {
                 f.close();
                 document.close();
             }
+            document.close();
         }
     }
 

@@ -16,7 +16,7 @@ public class SwitchPDF {
     private static WriteCSV writeCSV;
 
     public static void choose(File file, String out) throws IOException {
-
+        System.out.println(file.getAbsolutePath());
         String outPath=config.getPngPath(file);
         String tempPath=config.getPngTempPath(file);
         List<Rectangle> res = new ArrayList<>();
