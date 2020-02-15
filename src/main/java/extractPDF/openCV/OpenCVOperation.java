@@ -4,13 +4,18 @@ import extractPDF.config;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
+import org.apache.pdfbox.tools.imageio.ImageIOUtil;
+import org.icepdf.core.pobjects.Document;
+import org.icepdf.core.pobjects.Page;
+import org.icepdf.core.util.GraphicsRenderingHints;
 import org.opencv.core.*;
-import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
+import org.icepdf.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.*;
 import java.util.Iterator;
 import java.util.List;
@@ -85,14 +90,13 @@ public class OpenCVOperation {
     }
 
 
-    public static String pdf2Image(File pdfFile, String dstImgFolder, int dpi) {
+    public static String pdf2Image(File pdfFile, String dstImgFolder, int dpi) throws IOException {
 
 
         File file = pdfFile;
         PDDocument pdDocument;
         String res="";
-        try {
-            String imagePDFName = "temp"; // 获取图片文件名
+        String imagePDFName = "temp"; // 获取图片文件名
 
             pdDocument = PDDocument.load(file);
             PDFRenderer renderer = new PDFRenderer(pdDocument);
@@ -109,32 +113,20 @@ public class OpenCVOperation {
                 imgFilePath.append("_");
                 imgFilePath.append(i);
                 imgFilePath.append(".png");
-                File dstFile = new File(imgFilePath.toString());
+                File dstFile = new File(res);
                 if(!dstFile.exists()) {
                     dstFile.mkdirs();
                     dstFile.createNewFile();
+                }
 
-                }
-                try {
-                    BufferedImage image = renderer.renderImageWithDPI(i, dpi);
-                }
-                catch (Exception e){
-                    break;
-                }
                 BufferedImage image = renderer.renderImageWithDPI(i, dpi);
-                ImageIO.write(image, "png", dstFile);
+                ImageIOUtil.writeImage(image,res+"temp_"+i+".png",dpi);
                 System.out.println("第" + i + "页转换完成");
                 System.out.println("PDF文档转PNG图片成功！");
 //                return imgFilePath.toString();
             }
             pdDocument.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-
-            return res;
-
-        }
         return res;
 
     }

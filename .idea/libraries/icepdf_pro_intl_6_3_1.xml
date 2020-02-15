@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="icepdf-pro-intl-6.3.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/icepdf-pro-intl-6.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="jar://$PROJECT_DIR$/libs/icepdf-pro-intl-6.3.1.jar!/" recursive="false" />
+  </library>
+</component>

@@ -9,9 +9,9 @@ import java.util.LinkedList;
 
 public class exeFile {
     static SwitchMag switchMag = new SwitchMag();
-
+    static int count = 0;
     public static void readFile(String path, String out) {
-        static int count=0;
+
 //        System.out.println("ssss");
         File file = new File(path);
         if (file.exists()) {
@@ -31,10 +31,14 @@ public class exeFile {
                         try {
                             SwitchPDF.choose(file2, out + "\\" + parentName + "\\");
                             FileOperation.copyFile(file2);
-                            if(file2.delete())
+                            if (file2.delete()) {
                                 System.out.println("删除成功");
-                            else
+                                System.out.println("已处理" + count++ + "篇");
+                            }
+                            else {
                                 System.out.println("删除失败");
+                                System.out.println("已处理" + count++ + "篇");
+                            }
                         } catch (IOException e) {
 
                         }
@@ -51,11 +55,14 @@ public class exeFile {
                 try {
                     SwitchPDF.choose(file, out + "\\" + parentName + "\\");
                     FileOperation.copyFile(file);
-                    if(file.delete())
+                    if (file.delete()) {
                         System.out.println("删除成功");
-                    else
+                        System.out.println("已处理" + count++ + "篇");
+                    }
+                    else {
                         System.out.println("删除失败");
-                    System.out.println("已处理"+count+"篇");
+                        System.out.println("已处理" + count++ + "篇");
+                    }
                 } catch (IOException e) {
                 }
             }

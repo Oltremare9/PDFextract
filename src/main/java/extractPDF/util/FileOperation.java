@@ -15,5 +15,13 @@ public class FileOperation {
         FileUtils.copyFile(file,new File(config.getFinishFilePath(file)));
     }
 
+    public static void copyErrorFile(File file) throws IOException {
+        FileUtils.copyFile(file,new File(config.getErrorFilePath(file)+file.getName()));
+    }
+
+    public static void copyErrorConfig(File file) throws IOException {
+        FileUtils.copyFile(file,new File(config.getErrorConfigPath(file)+file.getName()));
+    }
+
 
 }
