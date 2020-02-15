@@ -1,5 +1,6 @@
 package extractPDF.openCV;
 
+import extractPDF.UI.ActionThread.ShowImageOnScreen;
 import extractPDF.config;
 import extractPDF.util.FileOperation;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -62,7 +63,7 @@ public class CurrentPDFOperation {
             dstFile.mkdirs();
             dstFile.createNewFile();
         }
-        String config=res+"conf.txt";
+//        String config=res+"conf.txt";
 
         //处理pdf绘制图片
         PDDocument pdDocument = null;
@@ -174,6 +175,63 @@ public class CurrentPDFOperation {
     }
 
     /**
+    * @Description: 仅解析前两页文本rect作为全文rect
+    * @Param: [pdfFile]
+    * @return: java.util.List<java.awt.Rectangle>
+    * @Author: whn
+    * @Date: 2020/2/15
+    */
+    public static List<Rectangle> getFirstTwoPagesRect(File pdfFile) throws IOException {
+        List<Rectangle> list = new ArrayList<>();
+        String returnPath = config.getPngTempPath(pdfFile);
+        PDDocument pdDocument = PDDocument.load(pdfFile);
+        Rectangle rec = new Rectangle();
+        Mat image = inputStream2Mat(returnPath + "temp_0.png");
+        rec.setSize(image.width(), image.height());
+        list.add(0, rec);
+        for(int j=0;j<=1;j++) {
+            image = inputStream2Mat(returnPath + "temp_" + j + ".png");
+            System.out.println(image.width() + "  " + image.height());
+            Mat visualImage = image.clone();
+            Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
+            //二值
+            double[] data = image.get(0, 0);
+            int thres = (int) (data[0] - 5);
+            Imgproc.threshold(image, image, thres, 255, Imgproc.THRESH_BINARY);
+            //反色
+            Core.bitwise_not(image, image);
+            image = dilate(image, 30);
+            //showImg(image);
+            List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+            Imgproc.findContours(image, contours, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+            System.out.println(contours.size());
+            clearNoiseContours(contours, 50000);
+            int top = image.height();
+            int bottom = 0;
+            for (int i = 0; i < contours.size(); i++) {
+                Rect rect = Imgproc.boundingRect(contours.get(i));
+                if (rect.height > 160) {
+                    Imgproc.rectangle(visualImage, rect.tl(), rect.br(), new Scalar(0, 0, 255), 3);
+                    System.out.println("x:" + rect.x + "y:" + rect.y + "width:" + rect.width + "height" + rect.height);
+                    if (rect.y + rect.height > bottom)
+                        bottom = rect.y + rect.height;
+                    if (rect.y < top)
+                        top = rect.y;
+                }
+            }
+            Rectangle rectangle = new Rectangle(0, top, rec.width, bottom - top);
+            list.add(j+1, rectangle);
+        }
+        for (int j = 3; j <= pdDocument.getNumberOfPages(); j++) {
+            list.add(j,list.get(2));
+        }
+        pdDocument.close();
+        
+//        showImg(visualImage);
+        return list;
+    }
+
+    /**
      * @Description: 将图片坐标 转换为对应的pdf坐标
      * @Param: [pdfFile, currentPos]
      * @return: java.awt.Rectangle
@@ -208,18 +266,52 @@ public class CurrentPDFOperation {
         return res;
     }
 
-//    public static void main(String args[]) throws IOException {
-//        //获取切割之后的图片坐标
-//        File file = new File("D:\\LDA\\金融论文\\贵州财经大学学报\\贵州财经大学学报2012\\" +
-//                "财政转型_以_有形之手_促进科学发展_武力.pdf");
-//        List list = getPageRectangle(file);
-//
-//        //转换为pdf内坐标
-//
-//        Rectangle rect = transferToRect(file, list);
-//
-//
-////
-//        showCurrentLine(file, rect);
-//    }
+
+
+    public static void getCurrentLineOnScreen(File file, List<Rectangle> list) throws IOException {
+
+        PDDocument pdDocument = null;
+        try {
+            pdDocument = PDDocument.load(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PDPage pdPage = pdDocument.getPage(0);
+        PDFRenderer renderer = new PDFRenderer(pdDocument);
+        List<BufferedImage> res=new ArrayList<>();
+        for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
+            float currentWidth = pdPage.getMediaBox().getWidth();
+            float currentHeight = pdPage.getMediaBox().getHeight();
+            BufferedImage image = null;
+            try {
+                image = renderer.renderImage(i, 3f);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            int imageWidth = image.getWidth();
+            int imageHeight = image.getHeight();
+            Graphics g = image.getGraphics();
+            float r = currentWidth / imageWidth;
+            g.setColor(Color.RED);//画笔颜色
+            g.drawRect((int) (list.get(i).x / r), (int) (list.get(i).y / r),
+                    (int) (list.get(i).width / r), (int) (list.get(i).height / r));
+            res.add(i,image);
+            FileOutputStream out = null;//输出图片的地址
+            try {
+                out = new FileOutputStream(config.showLinePNGpath + i + ".png");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            try {
+                ImageIO.write(image, "png", out);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ShowImageOnScreen showImageOnScreen=new ShowImageOnScreen(config.showLinePNGpath + i + ".png");
+            Thread thread=new Thread(showImageOnScreen);
+            thread.start();
+        }
+
+        pdDocument.close();
+    }
 }

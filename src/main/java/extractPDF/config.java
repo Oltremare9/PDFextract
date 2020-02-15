@@ -3,6 +3,8 @@ package extractPDF;
 import java.io.File;
 
 public class config {
+    //展示图片框图片位置
+    public static final String showLinePNGpath="D:\\";
     //结果图片输出位置
     public static final String pngOutPath = "F:\\LDA\\result_output\\pngOutPath\\";
     //图片拆分位置

@@ -2,6 +2,8 @@ package extractPDF.UI;
 
 import extractPDF.CSV.WriteCSV;
 import extractPDF.UI.ActionThread.PDF2TXT;
+import extractPDF.openCV.CurrentPDFOperation;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static extractPDF.extractOperation.exeFile.extractFile;
 import static extractPDF.extractOperation.exeFile.readFile;
@@ -203,11 +210,19 @@ public class ShowUI {
 
         //按钮pannel
         buttons.setLayout(new FlowLayout());
-//        JButton submitInfo = new JButton("提交提取规则");
+        JButton submitInfo = new JButton("查看区域");
         JButton extract = new JButton("开始提取");
-//        buttons.add(submitInfo);
-        buttons.add(Box.createGlue());
         buttons.add(extract);
+        buttons.add(submitInfo);
+        buttons.add(Box.createGlue());
+
+        submitInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         extract.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -226,14 +241,18 @@ public class ShowUI {
 //                            Thread thread=new Thread(myThread);
 //                            thread.start();
                             long start = System.currentTimeMillis();
-                            readFile(pdfURL, txtURL);
+                            try {
+                                readFile(pdfURL, txtURL);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
                             long end = System.currentTimeMillis();
                             System.out.println("start time:" + start +
                                     "; end time:" + end +
                                     "; Run Time:" + (end - start) / 1000 + "(s)   "
                                     + (end - start) / 60000 + "（mins）"
                                     + ((end - start) / 1000) % 60 + "s");
-                            JOptionPane.showMessageDialog(null, "处理完成"+
+                            JOptionPane.showMessageDialog(null, "处理完成" +
                                             "start time:" + start +
                                             "; end time:" + end +
                                             "; Run Time:" + (end - start) / 1000 + "(s)   "
@@ -249,7 +268,11 @@ public class ShowUI {
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
                             long start = System.currentTimeMillis();
-                            readFile(pdfURL, txtURL);
+                            try {
+                                readFile(pdfURL, txtURL);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
                             WriteCSV writeCSV1 = new WriteCSV(excelURL + "\\res.xls");
                             extractFile(txtURL, writeCSV1);
                             writeCSV1.write();
@@ -284,29 +307,36 @@ public class ShowUI {
 
             }
         });
-//        submitInfo.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                try {
-//                    CsvReader csvReader = new CsvReader("D:\\rule.csv", ',', Charset.forName("UTF-8"));
-//                    while (csvReader.readRecord()) {
-//                        String text = magazine.getText();
-//                        String newtitle = text.substring(0, text.length() - 4);
-//                        String newyear = text.substring(text.length() - 4);
-//                        String str = csvReader.get(0);
-//                        String year = str.substring(str.length() - 4);
-//                        String title = str.substring(0, str.length() - 4);
-////                        System.out.println(year+"^^"+title);
-//
-//                    }
-//                } catch (FileNotFoundException ex) {
-//                    ex.printStackTrace();
-//                } catch (IOException ex) {
-//                    ex.printStackTrace();
-//                }
-//
-//            }
-//        });
+        submitInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File file=new File(pdfURL);
+                int a= Integer.parseInt(x.getText());
+                int b=Integer.parseInt(y.getText());
+                int w= Integer.parseInt(width.getText());
+                int h= Integer.parseInt(height.getText());
+                Rectangle rect=new Rectangle(a,b,w,h);
+                List<Rectangle> list = new ArrayList<>();
+                int pages=0;
+                try {
+                    PDDocument pdDocument=PDDocument.load(file);
+                    pages=pdDocument.getNumberOfPages();
+                    pdDocument.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                for(int i=0;i<pages;i++){
+                    list.add(i,rect);
+                }
+                List<BufferedImage> res=new ArrayList<>();
+                try {
+                    CurrentPDFOperation.getCurrentLineOnScreen(file,list);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
 
         JFrame jf = new JFrame("PDF提取工具");
         jf.getContentPane().setLayout(new BoxLayout(jf.getContentPane(), BoxLayout.Y_AXIS));
@@ -321,6 +351,7 @@ public class ShowUI {
         jf.setVisible(true);
         jf.setResizable(false);
     }
+
 
     public static void main(String args[]) {
         show();

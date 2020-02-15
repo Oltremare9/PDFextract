@@ -29,7 +29,7 @@ public class SwitchPDF {
         PDDocument pdDocument=PDDocument.load(file);
         int pageNum=pdDocument.getNumberOfPages();
         pdDocument.close();
-        File f0 = new File(tempPath + "temp_"+(pageNum-1)+".png");
+        File f0 = new File(tempPath + "temp_"+(pageNum-1)+".png");//(pageNum-1)
         File f1 = new File(outPath + "config.txt");
         //如果存在切割图片 无须切割
         if (!f0.exists())
@@ -37,7 +37,10 @@ public class SwitchPDF {
         //不存在图片且
         // 不存在配置文件 解析rectangle并写入
         if (!f1.exists()) {
-            List list = CurrentPDFOperation.getPageRectangle(file);
+            //全文解写rect
+//            List list = CurrentPDFOperation.getPageRectangle(file);
+            //前两页解析rect
+            List list=CurrentPDFOperation.getFirstTwoPagesRect(file);
             res = CurrentPDFOperation.transferToRect(file, list);
             new File(outPath).mkdirs();
             f1.createNewFile();

@@ -2,6 +2,8 @@ package extractPDF.extractOperation;
 
 import extractPDF.CSV.WriteCSV;
 import extractPDF.util.FileOperation;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.icepdf.core.util.PdfOps;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +12,8 @@ import java.util.LinkedList;
 public class exeFile {
     static SwitchMag switchMag = new SwitchMag();
     static int count = 0;
-    public static void readFile(String path, String out) {
+
+    public static void readFile(String path, String out) throws IOException {
 
 //        System.out.println("ssss");
         File file = new File(path);
@@ -21,6 +24,10 @@ public class exeFile {
                     if (file2.isDirectory()) {
                         readFile(file2.getAbsolutePath(), out);
                     } else {
+                        PDDocument pdDocument = PDDocument.load(file2);
+                        if (pdDocument.getNumberOfPages() < 2)
+                            continue;
+                        pdDocument.close();
                         if (file2.getName().length() < 10)
                             continue;
 //                        System.out.println("文件:" + file2.getAbsolutePath());
@@ -34,8 +41,7 @@ public class exeFile {
                             if (file2.delete()) {
                                 System.out.println("删除成功");
                                 System.out.println("已处理" + count++ + "篇");
-                            }
-                            else {
+                            } else {
                                 System.out.println("删除失败");
                                 System.out.println("已处理" + count++ + "篇");
                             }
@@ -47,23 +53,28 @@ public class exeFile {
                 }
             }
             if (file.isFile()) {
-                if (file.getName().length() > 10) {
-                }
-                String parentName = file.getParent();
-                int index = parentName.lastIndexOf("\\");
-                parentName = parentName.substring(index + 1);
-                try {
-                    SwitchPDF.choose(file, out + "\\" + parentName + "\\");
-                    FileOperation.copyFile(file);
-                    if (file.delete()) {
-                        System.out.println("删除成功");
-                        System.out.println("已处理" + count++ + "篇");
+                PDDocument pdDocument = PDDocument.load(file);
+                //文件页数需要大于1
+                if (pdDocument.getNumberOfPages() > 1) {
+                    pdDocument.close();
+                    if (file.getName().length() > 10) {
+
+                        String parentName = file.getParent();
+                        int index = parentName.lastIndexOf("\\");
+                        parentName = parentName.substring(index + 1);
+                        try {
+                            SwitchPDF.choose(file, out + "\\" + parentName + "\\");
+                            FileOperation.copyFile(file);
+                            if (file.delete()) {
+                                System.out.println("删除成功");
+                                System.out.println("已处理" + count++ + "篇");
+                            } else {
+                                System.out.println("删除失败");
+                                System.out.println("已处理" + count++ + "篇");
+                            }
+                        } catch (IOException e) {
+                        }
                     }
-                    else {
-                        System.out.println("删除失败");
-                        System.out.println("已处理" + count++ + "篇");
-                    }
-                } catch (IOException e) {
                 }
             }
         } else {

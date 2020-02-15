@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/icepdf_core_6_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/icepdf_pro_6_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/icepdf_pro_intl_6_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/icepdf_viewer_6_3_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ActionThread/ShowImageOnScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ActionThread/PDF2TXT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ActionThread/PDF2TXT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +74,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/code/seckill" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.34743473" />
@@ -209,7 +205,8 @@
       <workItem from="1581683569054" duration="2629000" />
       <workItem from="1581686434888" duration="12254000" />
       <workItem from="1581704779396" duration="1812000" />
-      <workItem from="1581746646437" duration="5087000" />
+      <workItem from="1581746646437" duration="5195000" />
+      <workItem from="1581773515470" duration="11733000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -400,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581672087593</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="2.15 速度太慢">
+      <created>1581759522572</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1581759522572</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +424,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="新增武汉金融" />
     <MESSAGE value="新增贵州财经大学学报" />
     <MESSAGE value="新增金融理论探索" />
     <MESSAGE value="新增哈尔滨商业大学学报" />
@@ -445,15 +448,16 @@
     <MESSAGE value="识别rect但是仅通过第一页存在不标准（考虑结合文件流） 临时文件输出至硬盘 速度较慢" />
     <MESSAGE value="每个页面的rect都保存在最终结果txt中 临时文件输出至硬盘 opencv反而由于图片色彩的处理 过滤了奇怪字体的英文" />
     <MESSAGE value="新增线程1&amp;&amp;处理完成文件删除&amp;&amp;当前处理页码 考虑增加总文件数量" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增线程1&amp;&amp;处理完成文件删除&amp;&amp;当前处理页码 考虑增加总文件数量" />
+    <MESSAGE value="2.15 速度太慢" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.15 速度太慢" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java</url>
+          <line>224</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

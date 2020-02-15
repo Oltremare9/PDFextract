@@ -13,6 +13,7 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import org.icepdf.*;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
@@ -95,44 +96,45 @@ public class OpenCVOperation {
 
         File file = pdfFile;
         PDDocument pdDocument;
-        String res="";
+        String res = "";
         String imagePDFName = "temp"; // 获取图片文件名
 
-            pdDocument = PDDocument.load(file);
-            PDFRenderer renderer = new PDFRenderer(pdDocument);
-            /* dpi越大转换后越清晰，相对转换速度越慢 */
-            StringBuffer imgFilePath = null;
-            for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
-//            if (pdDocument.getNumberOfPages() > 2) {
-//                Integer i = 1;
+        pdDocument = PDDocument.load(file);
+        PDFRenderer renderer = new PDFRenderer(pdDocument);
+        /* dpi越大转换后越清晰，相对转换速度越慢 */
+        StringBuffer imgFilePath = null;
+//        if (pdDocument.getNumberOfPages() > 1) {
+//            for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
                 System.out.println("正在转换第" + i + "页");
-                res= config.getPngTempPath(file);
-                String imgFilePathPrefix = res+ imagePDFName;
+                res = config.getPngTempPath(file);
+                String imgFilePathPrefix = res + imagePDFName;
                 imgFilePath = new StringBuffer();
                 imgFilePath.append(imgFilePathPrefix);
                 imgFilePath.append("_");
                 imgFilePath.append(i);
                 imgFilePath.append(".png");
                 File dstFile = new File(res);
-                if(!dstFile.exists()) {
+                if (!dstFile.exists()) {
                     dstFile.mkdirs();
                     dstFile.createNewFile();
                 }
 
                 BufferedImage image = renderer.renderImageWithDPI(i, dpi);
-                ImageIOUtil.writeImage(image,res+"temp_"+i+".png",dpi);
+                ImageIOUtil.writeImage(image, res + "temp_" + i + ".png", dpi);
                 System.out.println("第" + i + "页转换完成");
                 System.out.println("PDF文档转PNG图片成功！");
 //                return imgFilePath.toString();
             }
-            pdDocument.close();
+//        }
+        pdDocument.close();
 
         return res;
 
     }
 
     public static Mat inputStream2Mat(String path) throws IOException {
-        InputStream inputStream=new FileInputStream(new File(path));
+        InputStream inputStream = new FileInputStream(new File(path));
         BufferedInputStream bis = new BufferedInputStream(inputStream);
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
@@ -152,8 +154,6 @@ public class OpenCVOperation {
         encoded.release();
         return decoded;
     }
-
-
 
 
 }

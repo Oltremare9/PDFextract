@@ -2,6 +2,8 @@ package extractPDF.UI.ActionThread;
 
 import javax.swing.*;
 
+import java.io.IOException;
+
 import static extractPDF.extractOperation.exeFile.readFile;
 
 public class PDF2TXT implements Runnable {
@@ -16,7 +18,11 @@ public class PDF2TXT implements Runnable {
     @Override
     public void run() {
         long start = System.currentTimeMillis();
-        readFile(pdfURL, txtURL);
+        try {
+            readFile(pdfURL, txtURL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         long end = System.currentTimeMillis();
         System.out.println("start time:" + start +
                 "; end time:" + end +
