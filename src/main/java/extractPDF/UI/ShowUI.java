@@ -33,8 +33,7 @@ public class ShowUI {
         JPanel mid = new JPanel();
         JPanel bottom = new JPanel();
         JPanel buttons = new JPanel();
-        //提取参数设置
-        JLabel magName = new JLabel("新期刊名");
+        //显示矩形框 输入rect
 
         Label label1 = new Label();
         label1.setText("x");
@@ -48,15 +47,13 @@ public class ShowUI {
         JTextField y = new JTextField();
         JTextField width = new JTextField();
         JTextField height = new JTextField();
-        JTextField magazine = new JTextField();
         x.setPreferredSize(new Dimension(40, 20));
         y.setPreferredSize(new Dimension(40, 20));
         width.setPreferredSize(new Dimension(40, 20));
         height.setPreferredSize(new Dimension(40, 20));
-        magazine.setPreferredSize(new Dimension(80, 20));
+        x.setText("0");
+        width.setText("1000");
         top.setLayout(new FlowLayout());
-        top.add(magName);
-        top.add(magazine);
         top.add(label1);
         top.add(x);
         top.add(Box.createHorizontalGlue());
