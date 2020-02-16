@@ -1,6 +1,7 @@
 package extractPDF.openCV;
 
 import extractPDF.config;
+import extractPDF.util.FileOperation;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
@@ -90,7 +91,8 @@ public class OpenCVOperation {
         return erode;
     }
 
-
+    //indexOutOfBounce
+    private static int errorCount=0;
     public static String pdf2Image(File pdfFile, String dstImgFolder, int dpi) throws IOException {
 
 
@@ -106,26 +108,33 @@ public class OpenCVOperation {
 //        if (pdDocument.getNumberOfPages() > 1) {
 //            for (int i = 0; i < 2; i++) {
         for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
-                System.out.println("正在转换第" + i + "页");
-                res = config.getPngTempPath(file);
-                String imgFilePathPrefix = res + imagePDFName;
-                imgFilePath = new StringBuffer();
-                imgFilePath.append(imgFilePathPrefix);
-                imgFilePath.append("_");
-                imgFilePath.append(i);
-                imgFilePath.append(".png");
-                File dstFile = new File(res);
-                if (!dstFile.exists()) {
-                    dstFile.mkdirs();
-                    dstFile.createNewFile();
-                }
-
-                BufferedImage image = renderer.renderImageWithDPI(i, dpi);
-                ImageIOUtil.writeImage(image, res + "temp_" + i + ".png", dpi);
-                System.out.println("第" + i + "页转换完成");
-                System.out.println("PDF文档转PNG图片成功！");
-//                return imgFilePath.toString();
+            System.out.println("正在转换第" + i + "页");
+            res = config.getPngTempPath(file);
+            String imgFilePathPrefix = res + imagePDFName;
+            imgFilePath = new StringBuffer();
+            imgFilePath.append(imgFilePathPrefix);
+            imgFilePath.append("_");
+            imgFilePath.append(i);
+            imgFilePath.append(".png");
+            File dstFile = new File(res);
+            if (!dstFile.exists()) {
+                dstFile.mkdirs();
+                dstFile.createNewFile();
             }
+            BufferedImage image = null;
+            try {
+                image = renderer.renderImageWithDPI(i, dpi);
+            } catch (IndexOutOfBoundsException e) {
+                FileOperation.copyIndexErrorFile(pdfFile);
+                image=renderer.renderImageWithDPI(i-1, dpi);
+            }
+
+
+            ImageIOUtil.writeImage(image, res + "temp_" + i + ".png", dpi);
+            System.out.println("第" + i + "页转换完成");
+            System.out.println("PDF文档转PNG图片成功！");
+//                return imgFilePath.toString();
+        }
 //        }
         pdDocument.close();
 

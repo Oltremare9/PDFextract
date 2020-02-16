@@ -234,28 +234,28 @@ public class ShowUI {
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
 
-//                            PDF2TXT myThread=new PDF2TXT(pdfURL,txtURL);
-//                            Thread thread=new Thread(myThread);
-//                            thread.start();
-                            long start = System.currentTimeMillis();
-                            try {
-                                readFile(pdfURL, txtURL);
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
-                            }
-                            long end = System.currentTimeMillis();
-                            System.out.println("start time:" + start +
-                                    "; end time:" + end +
-                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
-                                    + (end - start) / 60000 + "（mins）"
-                                    + ((end - start) / 1000) % 60 + "s");
-                            JOptionPane.showMessageDialog(null, "处理完成" +
-                                            "start time:" + start +
-                                            "; end time:" + end +
-                                            "; Run Time:" + (end - start) / 1000 + "(s)   "
-                                            + (end - start) / 60000 + "（mins）"
-                                            + ((end - start) / 1000) % 60 + "s",
-                                    "完成", JOptionPane.INFORMATION_MESSAGE);
+                            PDF2TXT myThread=new PDF2TXT(pdfURL,txtURL);
+                            Thread thread=new Thread(myThread);
+                            thread.start();
+//                            long start = System.currentTimeMillis();
+//                            try {
+//                                readFile(pdfURL, txtURL);
+//                            } catch (IOException ex) {
+//                                ex.printStackTrace();
+//                            }
+//                            long end = System.currentTimeMillis();
+//                            System.out.println("start time:" + start +
+//                                    "; end time:" + end +
+//                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
+//                                    + (end - start) / 60000 + "（mins）"
+//                                    + ((end - start) / 1000) % 60 + "s");
+//                            JOptionPane.showMessageDialog(null, "处理完成" +
+//                                            "start time:" + start +
+//                                            "; end time:" + end +
+//                                            "; Run Time:" + (end - start) / 1000 + "(s)   "
+//                                            + (end - start) / 60000 + "（mins）"
+//                                            + ((end - start) / 1000) % 60 + "s",
+//                                    "完成", JOptionPane.INFORMATION_MESSAGE);
 
                         }
                         break;

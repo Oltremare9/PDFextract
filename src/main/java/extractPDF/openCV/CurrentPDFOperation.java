@@ -82,6 +82,8 @@ public class CurrentPDFOperation {
                 image = renderer.renderImage(i, 3f);
             } catch (IOException e) {
                 e.printStackTrace();
+            }catch (IndexOutOfBoundsException e){
+                image=renderer.renderImage(i-1, 3f);
             }
             int imageWidth = image.getWidth();
             int imageHeight = image.getHeight();

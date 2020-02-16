@@ -23,5 +23,12 @@ public class FileOperation {
         FileUtils.copyFile(file,new File(config.getErrorConfigPath(file)+file.getName()));
     }
 
+    public static void copyIndexErrorFile(File file) throws IOException {
+        FileUtils.copyFile(file,new File(config.getErrorIndexPath(file)+file.getName()));
+    }
+
+    public static void copyFirstFile(File file) throws IOException{
+        FileUtils.copyFile(file,new File(config.getFirstPdfPath(file)+"first.pdf"));
+    }
 
 }

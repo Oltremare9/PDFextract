@@ -24,13 +24,19 @@ public class SwitchPDF {
         boolean isError = false;
         System.out.println(file.getAbsolutePath());
         String outPath = config.getPngPath(file);
+        String configPath=config.getConfigOutPath(file);
         String tempPath = config.getPngTempPath(file);
         List<Rectangle> res = new ArrayList<>();
         PDDocument pdDocument=PDDocument.load(file);
         int pageNum=pdDocument.getNumberOfPages();
         pdDocument.close();
         File f0 = new File(tempPath + "temp_"+(pageNum-1)+".png");//(pageNum-1)
+
+        //每个文章一个config 定位config位置
         File f1 = new File(outPath + "config.txt");
+
+        //每个每年的期刊一个config
+//        File f1=new File(configPath+"config.txt");
         //如果存在切割图片 无须切割
         if (!f0.exists())
             pdf2Image(file, config.tempSplitPath, config.dip);
@@ -38,13 +44,14 @@ public class SwitchPDF {
         // 不存在配置文件 解析rectangle并写入
         if (!f1.exists()) {
             //全文解写rect
-//            List list = CurrentPDFOperation.getPageRectangle(file);
+            List list = CurrentPDFOperation.getPageRectangle(file);
             //前两页解析rect
-            List list=CurrentPDFOperation.getFirstTwoPagesRect(file);
+//            List list=CurrentPDFOperation.getFirstTwoPagesRect(file);
             res = CurrentPDFOperation.transferToRect(file, list);
             new File(outPath).mkdirs();
             f1.createNewFile();
             BufferedWriter writer = new BufferedWriter(new FileWriter(f1));
+//            FileOperation.copyFirstFile(file);
             for (int j = 0; j < res.size(); j++) {
                 Rectangle rect = res.get(j);
                 if (rect.height < 0) {
@@ -62,15 +69,24 @@ public class SwitchPDF {
             int line = 0;
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f1)));
             String text = null;
+            String str[]=null;
             while ((text = reader.readLine()) != null) {
-                String str[] = text.split(",");
+                str = text.split(",");
                 //如果记录有误
                 if (Integer.parseInt(str[3]) < 0) {
                     isError = true;
                     Rectangle rect = chooseFromFile(file);
                     res.add(line++, rect);
-                } else {
+                }
+                //无误
+                else {
                     res.add(line++, new Rectangle(Integer.parseInt(str[0]), Integer.parseInt(str[1]),
+                            Integer.parseInt(str[2]), Integer.parseInt(str[3])));
+                }
+            }
+            if(line<pageNum){
+                for(int i=line;i<pageNum;i++){
+                    res.add(i,new Rectangle(Integer.parseInt(str[0]), Integer.parseInt(str[1]),
                             Integer.parseInt(str[2]), Integer.parseInt(str[3])));
                 }
             }

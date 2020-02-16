@@ -26,7 +26,7 @@ public class deletePDF {
                     if (file2.isDirectory()) {
                         readFile(file2.getAbsolutePath());
                     } else {
-                        if (!file2.getName().endsWith(".pdf")||file2.getName().length()<8) {
+                        if (file2.getName().contains("须知")) {
                             System.out.println(file2.getName());
                             if (file2.delete())
                                 System.out.println("删除成功" + count++);

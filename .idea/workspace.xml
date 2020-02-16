@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/deletePDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/deletePDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/deletePDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -217,6 +222,7 @@
       <workItem from="1581746646437" duration="5195000" />
       <workItem from="1581773515470" duration="12096000" />
       <workItem from="1581788095653" duration="4291000" />
+      <workItem from="1581849059664" duration="15354000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -421,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581787487659</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新 删除了非pdf 目录">
+      <created>1581849155597</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1581849155597</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +454,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="新增金融理论探索" />
     <MESSAGE value="新增哈尔滨商业大学学报" />
     <MESSAGE value="新增海南金融 直接删除最后引文" />
     <MESSAGE value="新增辽东学院学报 23日共计6300篇文章" />
@@ -466,18 +478,10 @@
     <MESSAGE value="新增线程1&amp;&amp;处理完成文件删除&amp;&amp;当前处理页码 考虑增加总文件数量" />
     <MESSAGE value="2.15 速度太慢" />
     <MESSAGE value="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新" />
+    <MESSAGE value="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新 删除了非pdf 目录" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新 删除了非pdf 目录" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java</url>
-          <line>224</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="index" />
