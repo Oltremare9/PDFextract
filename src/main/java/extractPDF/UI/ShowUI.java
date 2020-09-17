@@ -234,28 +234,9 @@ public class ShowUI {
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
 
-                            PDF2TXT myThread=new PDF2TXT(pdfURL,txtURL);
-                            Thread thread=new Thread(myThread);
+                            PDF2TXT myThread = new PDF2TXT(pdfURL, txtURL);
+                            Thread thread = new Thread(myThread);
                             thread.start();
-//                            long start = System.currentTimeMillis();
-//                            try {
-//                                readFile(pdfURL, txtURL);
-//                            } catch (IOException ex) {
-//                                ex.printStackTrace();
-//                            }
-//                            long end = System.currentTimeMillis();
-//                            System.out.println("start time:" + start +
-//                                    "; end time:" + end +
-//                                    "; Run Time:" + (end - start) / 1000 + "(s)   "
-//                                    + (end - start) / 60000 + "（mins）"
-//                                    + ((end - start) / 1000) % 60 + "s");
-//                            JOptionPane.showMessageDialog(null, "处理完成" +
-//                                            "start time:" + start +
-//                                            "; end time:" + end +
-//                                            "; Run Time:" + (end - start) / 1000 + "(s)   "
-//                                            + (end - start) / 60000 + "（mins）"
-//                                            + ((end - start) / 1000) % 60 + "s",
-//                                    "完成", JOptionPane.INFORMATION_MESSAGE);
 
                         }
                         break;
@@ -307,27 +288,27 @@ public class ShowUI {
         submitInfo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                File file=new File(pdfURL);
-                int a= Integer.parseInt(x.getText());
-                int b=Integer.parseInt(y.getText());
-                int w= Integer.parseInt(width.getText());
-                int h= Integer.parseInt(height.getText());
-                Rectangle rect=new Rectangle(a,b,w,h);
+                File file = new File(pdfURL);
+                int a = Integer.parseInt(x.getText());
+                int b = Integer.parseInt(y.getText());
+                int w = Integer.parseInt(width.getText());
+                int h = Integer.parseInt(height.getText());
+                Rectangle rect = new Rectangle(a, b, w, h);
                 List<Rectangle> list = new ArrayList<>();
-                int pages=0;
+                int pages = 0;
                 try {
-                    PDDocument pdDocument=PDDocument.load(file);
-                    pages=pdDocument.getNumberOfPages();
+                    PDDocument pdDocument = PDDocument.load(file);
+                    pages = pdDocument.getNumberOfPages();
                     pdDocument.close();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-                for(int i=0;i<pages;i++){
-                    list.add(i,rect);
+                for (int i = 0; i < pages; i++) {
+                    list.add(i, rect);
                 }
-                List<BufferedImage> res=new ArrayList<>();
+                List<BufferedImage> res = new ArrayList<>();
                 try {
-                    CurrentPDFOperation.getCurrentLineOnScreen(file,list);
+                    CurrentPDFOperation.getCurrentLineOnScreen(file, list);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

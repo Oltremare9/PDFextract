@@ -1,23 +1,16 @@
 package extractPDF.openCV;
 
-import extractPDF.config;
+import extractPDF.Config;
 import extractPDF.util.FileOperation;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
-import org.icepdf.core.pobjects.Document;
-import org.icepdf.core.pobjects.Page;
-import org.icepdf.core.util.GraphicsRenderingHints;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
-import org.icepdf.*;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.*;
 import java.util.Iterator;
 import java.util.List;
@@ -109,7 +102,7 @@ public class OpenCVOperation {
 //            for (int i = 0; i < 2; i++) {
         for (int i = 0; i < pdDocument.getNumberOfPages(); i++) {
             System.out.println("正在转换第" + i + "页");
-            res = config.getPngTempPath(file);
+            res = Config.getPngTempPath(file);
             String imgFilePathPrefix = res + imagePDFName;
             imgFilePath = new StringBuffer();
             imgFilePath.append(imgFilePathPrefix);
@@ -126,7 +119,7 @@ public class OpenCVOperation {
                 image = renderer.renderImageWithDPI(i, dpi);
             } catch (IndexOutOfBoundsException e) {
                 FileOperation.copyIndexErrorFile(pdfFile);
-                image=renderer.renderImageWithDPI(i-1, dpi);
+                image=renderer.renderImageWithDPI(0, dpi);
             }
 
 

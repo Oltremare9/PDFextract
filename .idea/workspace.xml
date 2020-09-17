@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27b96efb-298a-4b6e-bbc0-2467154a97e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/extractPDF/CutSentence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/UI/ShowUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/deletePDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/deletePDF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/SwitchPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/extractOperation/exeFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/CurrentPDFOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/openCV/OpenCVOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/extractPDF/util/FileOperation.java" afterDir="false" />
@@ -118,6 +120,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CutSentence" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="extractPDF.CutSentence" />
+      <module name="PDFextract" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="extractPDF.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShowUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="extractPDF.UI.ShowUI" />
       <module name="PDFextract" />
@@ -162,10 +177,12 @@
       <item itemvalue="Application.exeFile" />
       <item itemvalue="Application.ShowUI" />
       <item itemvalue="Application.deletePDF" />
+      <item itemvalue="Application.CutSentence" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ShowUI" />
+        <item itemvalue="Application.CutSentence" />
         <item itemvalue="Application.deletePDF" />
         <item itemvalue="Application.CurrentPDFOperation" />
         <item itemvalue="Application.exeFile" />
@@ -222,7 +239,17 @@
       <workItem from="1581746646437" duration="5195000" />
       <workItem from="1581773515470" duration="12096000" />
       <workItem from="1581788095653" duration="4291000" />
-      <workItem from="1581849059664" duration="15354000" />
+      <workItem from="1581849059664" duration="20544000" />
+      <workItem from="1581910300191" duration="18776000" />
+      <workItem from="1582005672731" duration="5145000" />
+      <workItem from="1582094300180" duration="17000" />
+      <workItem from="1582101202721" duration="7942000" />
+      <workItem from="1582391611237" duration="2845000" />
+      <workItem from="1582526369707" duration="24000" />
+      <workItem from="1599918377218" duration="2442000" />
+      <workItem from="1599973300319" duration="599000" />
+      <workItem from="1600269922275" duration="2909000" />
+      <workItem from="1600310414646" duration="732000" />
     </task>
     <task id="LOCAL-00001" summary="新增武汉金融">
       <created>1574145932036</created>
@@ -434,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581849155597</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="2.16 尝试了一年的期刊用一个标准 效果太差 换回pdf与config一一对应">
+      <created>1581869101128</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1581869101128</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,9 +488,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="新增哈尔滨商业大学学报" />
-    <MESSAGE value="新增海南金融 直接删除最后引文" />
-    <MESSAGE value="新增辽东学院学报 23日共计6300篇文章" />
     <MESSAGE value="新增地方财政研究 23日共计8200篇文章 接下来是甘肃文章 match2" />
     <MESSAGE value="新增内蒙古财经大学学报 新一批文章达到10700" />
     <MESSAGE value="青海金融参数待调" />
@@ -479,7 +510,10 @@
     <MESSAGE value="2.15 速度太慢" />
     <MESSAGE value="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新" />
     <MESSAGE value="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新 删除了非pdf 目录" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.15 只以前两页作为参考 加入显示框的功能 原本规则需要据此更新 删除了非pdf 目录" />
+    <MESSAGE value="2.15 尝试了一年的期刊用一个标准 效果太差 换回pdf与config一一对应" />
+    <MESSAGE value="2.17 尝试了一年的期刊用一个标准 效果太差 换回pdf与config一一对应" />
+    <MESSAGE value="2.16 尝试了一年的期刊用一个标准 效果太差 换回pdf与config一一对应" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.16 尝试了一年的期刊用一个标准 效果太差 换回pdf与config一一对应" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

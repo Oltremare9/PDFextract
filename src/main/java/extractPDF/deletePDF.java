@@ -26,7 +26,10 @@ public class deletePDF {
                     if (file2.isDirectory()) {
                         readFile(file2.getAbsolutePath());
                     } else {
-                        if (file2.getName().contains("须知")) {
+                        if (file2.getName().contains("须知")||file2.getName().contains("投稿")
+                        ||file2.getName().contains("启事")||file2.getName().contains("目录")
+                                ||file2.getName().contains("目次")||file2.getName().contains("声明")
+                                ||file2.getName().contains("总览")) {
                             System.out.println(file2.getName());
                             if (file2.delete())
                                 System.out.println("删除成功" + count++);

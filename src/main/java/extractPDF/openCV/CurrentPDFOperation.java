@@ -1,15 +1,12 @@
 package extractPDF.openCV;
 
+import extractPDF.Config;
 import extractPDF.UI.ActionThread.ShowImageOnScreen;
-import extractPDF.config;
-import extractPDF.util.FileOperation;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.opencv.core.*;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.utils.Converters;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -19,9 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static extractPDF.openCV.OpenCVOperation.*;
 
@@ -30,7 +25,7 @@ public class CurrentPDFOperation {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    static final String pngOutPath = config.pngOutPath;
+    static final String pngOutPath = Config.pngOutPath;
 //    static final String pngOutPath = "D:\\LDA\\result_output\\pngOutPath\\";
 
 
@@ -63,7 +58,7 @@ public class CurrentPDFOperation {
             dstFile.mkdirs();
             dstFile.createNewFile();
         }
-//        String config=res+"conf.txt";
+//        String Config=res+"conf.txt";
 
         //处理pdf绘制图片
         PDDocument pdDocument = null;
@@ -83,7 +78,7 @@ public class CurrentPDFOperation {
             } catch (IOException e) {
                 e.printStackTrace();
             }catch (IndexOutOfBoundsException e){
-                image=renderer.renderImage(i-1, 3f);
+                image=renderer.renderImage(0, 3f);
             }
             int imageWidth = image.getWidth();
             int imageHeight = image.getHeight();
@@ -120,14 +115,14 @@ public class CurrentPDFOperation {
      */
     //切分临时图片位置
 //    static final String tempSplitPath = "D:\\LDA\\runnning_output\\tempSplitPng\\";//本地
-    static final String tempSplitPath = config.tempSplitPath;
+    static final String tempSplitPath = Config.tempSplitPath;
     //拆分图片dpi
-    static final int dpi = config.dip;
+    static final int dpi = Config.dip;
 
     public static List<Rectangle> getPageRectangle(File pdfFile) throws IOException {
         List<Rectangle> list = new ArrayList<>();
 //        deleteFiles(tempSplitPath);
-        String returnPath = config.getPngTempPath(pdfFile);
+        String returnPath = Config.getPngTempPath(pdfFile);
         PDDocument pdDocument = PDDocument.load(pdfFile);
         Rectangle rec = new Rectangle();
         Mat image = inputStream2Mat(returnPath + "temp_0.png");
@@ -185,7 +180,7 @@ public class CurrentPDFOperation {
     */
     public static List<Rectangle> getFirstTwoPagesRect(File pdfFile) throws IOException {
         List<Rectangle> list = new ArrayList<>();
-        String returnPath = config.getPngTempPath(pdfFile);
+        String returnPath = Config.getPngTempPath(pdfFile);
         PDDocument pdDocument = PDDocument.load(pdfFile);
         Rectangle rec = new Rectangle();
         Mat image = inputStream2Mat(returnPath + "temp_0.png");
@@ -300,7 +295,7 @@ public class CurrentPDFOperation {
             res.add(i,image);
             FileOutputStream out = null;//输出图片的地址
             try {
-                out = new FileOutputStream(config.showLinePNGpath + i + ".png");
+                out = new FileOutputStream(Config.showLinePNGpath + i + ".png");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -309,7 +304,7 @@ public class CurrentPDFOperation {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ShowImageOnScreen showImageOnScreen=new ShowImageOnScreen(config.showLinePNGpath + i + ".png");
+            ShowImageOnScreen showImageOnScreen=new ShowImageOnScreen(Config.showLinePNGpath + i + ".png");
             Thread thread=new Thread(showImageOnScreen);
             thread.start();
         }

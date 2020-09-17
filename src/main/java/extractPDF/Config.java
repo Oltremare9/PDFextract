@@ -2,7 +2,7 @@ package extractPDF;
 
 import java.io.File;
 
-public class config {
+public class Config {
     //展示图片框图片位置
     public static final String showLinePNGpath="D:\\";
     //每年的期刊存在一个config config输出地址
@@ -39,7 +39,7 @@ public class config {
         absPath = absPath.substring(0, index);
         index = absPath.lastIndexOf("\\");
         String mag = absPath.substring(index + 1);
-        String pngOutPath= config.firstPdfPath;
+        String pngOutPath= Config.firstPdfPath;
         String res = pngOutPath + mag + "\\" + magYear + "\\" + filename.substring(0, filename.length() - 4)
                 + "\\";
         return res;
@@ -59,7 +59,7 @@ public class config {
         absPath = absPath.substring(0, index);
         index = absPath.lastIndexOf("\\");
         String mag = absPath.substring(index + 1);
-        String pngOutPath= config.errorIndexPath;
+        String pngOutPath= Config.errorIndexPath;
         String res = pngOutPath + mag + "\\" + magYear + "\\" + filename.substring(0, filename.length() - 4)
                 + "\\";
         return res;
@@ -79,7 +79,7 @@ public class config {
         absPath = absPath.substring(0, index);
         index = absPath.lastIndexOf("\\");
         String mag = absPath.substring(index + 1);
-        String configOutPath=config.configOutPath;
+        String configOutPath= Config.configOutPath;
         String res=configOutPath+mag+"\\"+magYear+"\\";
         return res;
     }
@@ -98,7 +98,7 @@ public class config {
         absPath = absPath.substring(0, index);
         index = absPath.lastIndexOf("\\");
         String mag = absPath.substring(index + 1);
-        String pngOutPath= config.errorPath;
+        String pngOutPath= Config.errorPath;
         String res = pngOutPath + mag + "\\" + magYear + "\\" + filename.substring(0, filename.length() - 4)
                 + "\\";
         return res;
@@ -106,7 +106,7 @@ public class config {
     public static String getErrorConfigPath(File file){
         //原文件绝对目录
         String absPath = file.getAbsolutePath();
-        //原文件文件名 config.txt
+        //原文件文件名 Config.txt
         String filename = file.getName();
         //上一级目录名 pdf文件名
         String magYear;
@@ -119,7 +119,7 @@ public class config {
         index = absPath.lastIndexOf("\\");
         String mag = absPath.substring(index + 1);
 
-        String pngOutPath= config.errorPath;
+        String pngOutPath= Config.errorPath;
         String res = pngOutPath +mag.substring(0,mag.length()-4)+"\\"+ mag + "\\" + magYear + "\\" ;
         return res;
     }
@@ -138,7 +138,7 @@ public class config {
         absPath = absPath.substring(0, index);
         index = absPath.lastIndexOf("\\");
         String mag = absPath.substring(index + 1);
-        String pngOutPath= config.pngOutPath;
+        String pngOutPath= Config.pngOutPath;
         String res = pngOutPath + mag + "\\" + magYear + "\\" + filename.substring(0, filename.length() - 4)
                 + "\\";
         return res;
@@ -158,7 +158,7 @@ public class config {
         absPath = absPath.substring(0, index);
         index = absPath.lastIndexOf("\\");
         String mag = absPath.substring(index + 1);
-        String pngTempPath= config.tempSplitPath;
+        String pngTempPath= Config.tempSplitPath;
         String res = pngTempPath + mag + "\\" + magYear + "\\" + filename.substring(0, filename.length() - 4)
                 + "\\";
         return res;

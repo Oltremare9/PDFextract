@@ -2,11 +2,10 @@ package extractPDF.extractOperation;
 
 import com.csvreader.CsvReader;
 import extractPDF.CSV.WriteCSV;
-import extractPDF.config;
+import extractPDF.Config;
 import extractPDF.openCV.CurrentPDFOperation;
 import extractPDF.util.FileOperation;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.opencv.core.Rect;
 
 import java.awt.*;
 import java.io.*;
@@ -23,9 +22,9 @@ public class SwitchPDF {
     public static void choose(File file, String out) throws IOException {
         boolean isError = false;
         System.out.println(file.getAbsolutePath());
-        String outPath = config.getPngPath(file);
-        String configPath=config.getConfigOutPath(file);
-        String tempPath = config.getPngTempPath(file);
+        String outPath = Config.getPngPath(file);
+        String configPath= Config.getConfigOutPath(file);
+        String tempPath = Config.getPngTempPath(file);
         List<Rectangle> res = new ArrayList<>();
         PDDocument pdDocument=PDDocument.load(file);
         int pageNum=pdDocument.getNumberOfPages();
@@ -33,13 +32,13 @@ public class SwitchPDF {
         File f0 = new File(tempPath + "temp_"+(pageNum-1)+".png");//(pageNum-1)
 
         //每个文章一个config 定位config位置
-        File f1 = new File(outPath + "config.txt");
+        File f1 = new File(outPath + "Config.txt");
 
         //每个每年的期刊一个config
-//        File f1=new File(configPath+"config.txt");
+//        File f1=new File(configPath+"Config.txt");
         //如果存在切割图片 无须切割
         if (!f0.exists())
-            pdf2Image(file, config.tempSplitPath, config.dip);
+            pdf2Image(file, Config.tempSplitPath, Config.dip);
         //不存在图片且
         // 不存在配置文件 解析rectangle并写入
         if (!f1.exists()) {
@@ -324,7 +323,7 @@ public class SwitchPDF {
         parentName = parentName.substring(index + 1);
         String mag = parentName.substring(0, parentName.length() - 4);
         String ruleyear = parentName.substring(parentName.length() - 4);
-        CsvReader csvReader = new CsvReader(config.rulePath, ',', Charset.forName("utf-8"));
+        CsvReader csvReader = new CsvReader(Config.rulePath, ',', Charset.forName("utf-8"));
         Rectangle rect = new Rectangle(0, 0, 0, 0);
         while (csvReader.readRecord()) {
             String str = csvReader.get(0);

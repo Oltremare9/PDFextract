@@ -17,6 +17,7 @@ public class exeFile {
 
 //        System.out.println("ssss");
         File file = new File(path);
+        PDDocument pdDocument;
         if (file.exists()) {
             File[] files = file.listFiles();
             if (null != files) {
@@ -24,7 +25,13 @@ public class exeFile {
                     if (file2.isDirectory()) {
                         readFile(file2.getAbsolutePath(), out);
                     } else {
-                        PDDocument pdDocument = PDDocument.load(file2);
+                        System.out.println("正在处理"+file2.getAbsolutePath());
+                        //存在无法打开 丢失root的pdf
+                        try {
+                            pdDocument = PDDocument.load(file2);
+                        }catch (IOException e){
+                            continue;
+                        }
                         if (pdDocument.getNumberOfPages() < 2)
                             continue;
                         pdDocument.close();
@@ -53,7 +60,7 @@ public class exeFile {
                 }
             }
             if (file.isFile()) {
-                PDDocument pdDocument = PDDocument.load(file);
+                pdDocument = PDDocument.load(file);
                 //文件页数需要大于1
                 if (pdDocument.getNumberOfPages() > 1) {
                     pdDocument.close();
