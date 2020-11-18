@@ -9,6 +9,9 @@
         <module name="PDFextract" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="science-parse-master" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="GENERATE_NO_WARNINGS" value="true" />

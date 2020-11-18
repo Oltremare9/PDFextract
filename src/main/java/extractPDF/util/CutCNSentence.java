@@ -1,11 +1,10 @@
-package extractPDF;
-
+package extractPDF.util;
 import java.io.*;
 
-public class CutSentence {
+public class CutCNSentence {
     static int wordNum=0;
     public static void main(String args[]) {
-        CutSentence cutSentence = new CutSentence();
+        CutCNSentence cutSentence = new CutCNSentence();
         cutSentence.cutSentenct("C:\\Users\\11346\\Desktop\\原txt\\");
     }
 

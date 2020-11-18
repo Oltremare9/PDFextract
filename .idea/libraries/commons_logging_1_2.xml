@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="commons-logging-1.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/fontbox-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/icepdf-pro-6.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/icepdf-core-6.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/icepdf-viewer-6.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/opencv-347.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/pdfbox-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spire.pdf.free-2.6.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/icepdf-pro-6.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/icepdf-core-6.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/opencv-347.jar!/" />
+    </SOURCES>
+  </library>
+</component>

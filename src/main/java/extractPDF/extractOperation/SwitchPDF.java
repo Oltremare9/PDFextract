@@ -5,6 +5,7 @@ import extractPDF.CSV.WriteCSV;
 import extractPDF.Config;
 import extractPDF.openCV.CurrentPDFOperation;
 import extractPDF.util.FileOperation;
+import extractPDF.util.Pair;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.awt.*;
@@ -19,7 +20,7 @@ public class SwitchPDF {
 
     private static WriteCSV writeCSV;
 
-    public static void choose(File file, String out) throws IOException {
+    public static void choose(File file, String out, Pair pair) throws IOException {
         boolean isError = false;
         System.out.println(file.getAbsolutePath());
         String outPath = Config.getPngPath(file);
@@ -29,6 +30,10 @@ public class SwitchPDF {
         PDDocument pdDocument=PDDocument.load(file);
         int pageNum=pdDocument.getNumberOfPages();
         pdDocument.close();
+
+
+        //无需使用openCV时注释
+
         File f0 = new File(tempPath + "temp_"+(pageNum-1)+".png");//(pageNum-1)
 
         //每个文章一个config 定位config位置
@@ -42,6 +47,7 @@ public class SwitchPDF {
         //不存在图片且
         // 不存在配置文件 解析rectangle并写入
         if (!f1.exists()) {
+
             //全文解写rect
             List list = CurrentPDFOperation.getPageRectangle(file);
             //前两页解析rect
@@ -107,8 +113,16 @@ public class SwitchPDF {
             FileOperation.copyErrorFile(file);
             FileOperation.copyErrorConfig(f1);
         }
+
         CurrentPDFOperation.showCurrentLine(file, res);
-        SimplyToTxt.commonToTxt(file, out, res);
+        //无需openCV时注释
+
+
+        SimplyToTxt.commonToTxt(file, out, res,pair);
+
+
+
+
 
         //从文件中读取
 

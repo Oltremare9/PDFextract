@@ -1,15 +1,21 @@
 package extractPDF;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Config {
     //展示图片框图片位置
     public static final String showLinePNGpath="D:\\";
     //每年的期刊存在一个config config输出地址
+//    public static final String configOutPath="E:\\LDA\\result_output\\pngOutPath\\"; //F:\LDA\result_output\pngOutPath\国际金融研究\国际金融研究2005
     public static final String configOutPath="F:\\LDA\\result_output\\pngOutPath\\"; //F:\LDA\result_output\pngOutPath\国际金融研究\国际金融研究2005
+
     //结果图片输出位置
+//    public static final String pngOutPath = "E:\\LDA\\result_output\\pngOutPath\\";
     public static final String pngOutPath = "F:\\LDA\\result_output\\pngOutPath\\";
     //图片拆分位置
+//    public static final String tempSplitPath = "E:\\LDA\\runnning_output\\tempSplitPng\\";
     public static final String tempSplitPath = "F:\\LDA\\runnning_output\\tempSplitPng\\";
     //图片处理dpi
     public static final int dip=240;
@@ -18,12 +24,23 @@ public class Config {
     //原本匹配参数csv文件位置
     public static final String rulePath="D:\\extract.csv";
     //错误文件输出位置
+//    public static final String errorPath="E:\\LDA\\error\\";
     public static final String errorPath="F:\\LDA\\error\\";
     //数组下标越界导致错误的文件位置
+//    public static final String errorIndexPath="E:\\LDA\\runnning_output\\";
     public static final String errorIndexPath="F:\\LDA\\IndexOutError\\";
     //每份期刊的作为标准的pdf路径拷贝位置
+//    public static final String firstPdfPath="E:\\LDA\\FirstPdf\\";
     public static final String firstPdfPath="F:\\LDA\\FirstPdf\\";
 
+    public static final Set<String> set = new HashSet<String>(){
+        {
+            add("base");
+            add("by");
+            add("By");
+            add("use");
+        }
+    };
     public static String getFirstPdfPath(File file){
         //原文件绝对目录
         String absPath = file.getAbsolutePath();

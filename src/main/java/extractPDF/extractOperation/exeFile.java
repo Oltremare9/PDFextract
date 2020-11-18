@@ -2,8 +2,8 @@ package extractPDF.extractOperation;
 
 import extractPDF.CSV.WriteCSV;
 import extractPDF.util.FileOperation;
+import extractPDF.util.Pair;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.icepdf.core.util.PdfOps;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class exeFile {
     static SwitchMag switchMag = new SwitchMag();
     static int count = 0;
 
-    public static void readFile(String path, String out) throws IOException {
+    public static void readFile(String path, String out, Pair pair) throws IOException {
 
 //        System.out.println("ssss");
         File file = new File(path);
@@ -23,7 +23,7 @@ public class exeFile {
             if (null != files) {
                 for (File file2 : files) {
                     if (file2.isDirectory()) {
-                        readFile(file2.getAbsolutePath(), out);
+                        readFile(file2.getAbsolutePath(), out, pair);
                     } else {
                         System.out.println("正在处理"+file2.getAbsolutePath());
                         //存在无法打开 丢失root的pdf
@@ -43,7 +43,7 @@ public class exeFile {
                         int index = parentName.lastIndexOf("\\");
                         parentName = parentName.substring(index + 1);
                         try {
-                            SwitchPDF.choose(file2, out + "\\" + parentName + "\\");
+                            SwitchPDF.choose(file2, out + "\\" + parentName + "\\",pair);
                             FileOperation.copyFile(file2);
                             if (file2.delete()) {
                                 System.out.println("删除成功");
@@ -70,7 +70,7 @@ public class exeFile {
                         int index = parentName.lastIndexOf("\\");
                         parentName = parentName.substring(index + 1);
                         try {
-                            SwitchPDF.choose(file, out + "\\" + parentName + "\\");
+                            SwitchPDF.choose(file, out + "\\" + parentName + "\\",pair);
                             FileOperation.copyFile(file);
                             if (file.delete()) {
                                 System.out.println("删除成功");

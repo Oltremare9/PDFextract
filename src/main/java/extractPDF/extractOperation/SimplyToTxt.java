@@ -1,4 +1,5 @@
 package extractPDF.extractOperation;
+import extractPDF.util.Pair;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class SimplyToTxt {
     //提取对用过滤区域的文本 使用rectangle来控制对应区域
-    static void toText(File file, String out, List<Rectangle> rec, int start, int end) throws IOException {
+    static void toText(File file, String out, List<Rectangle> rec, Pair pair) throws IOException {
         if (file.isFile()) {
             PDDocument document = PDDocument.load(file);
             int pageAmount = document.getNumberOfPages();
@@ -21,33 +22,93 @@ public class SimplyToTxt {
             String cut = "";
             System.out.println(file.getName());
             if (pageAmount >= 3) {
-                for (int page = Math.max(start, 0); page < Math.min(pageAmount, end); page++) {
-//                for (int page = 0; page < 1; page++)
-                    System.out.println(page);
-                    try {
-                        Rectangle rect = rec.get(page);
-                        stripper.addRegion("head", rect);
-                        stripper.extractRegions(document.getPage(page));
-                    }
-                    catch (Exception e){
-                        System.out.println(file.getName());
-                        break;
-                    }
-                    String temp = stripper.getTextForRegion("head");
-                    byte[] b = null;
-                    for (int c = 0; c < temp.length(); c++) {
-                        String s = temp.substring(c, c + 1);
-                        if(s.equals("　")) {
-                            cut += " ";
-                            continue;
+                //不为空 则限定前后各取几页 为空则默认全文
+                if(null==pair) {
+                    for (int page = 0; page < pageAmount; page++) {
+                        System.out.println(page);
+                        try {
+                            Rectangle rect = rec.get(page);
+                            stripper.addRegion("head", rect);
+                            stripper.extractRegions(document.getPage(page));
+                        } catch (Exception e) {
+                            System.out.println(file.getName());
+                            break;
                         }
-                        b = s.getBytes("unicode");
-                        if (b[2] == -1) {
-                            b[3] = (byte) (b[3] + 32);
-                            b[2] = 0;
-                            cut += (new String(b, "unicode"));
-                        } else {
-                            cut += s;
+                        String temp = stripper.getTextForRegion("head");
+                        byte[] b = null;
+                        for (int c = 0; c < temp.length(); c++) {
+                            String s = temp.substring(c, c + 1);
+                            if (s.equals("　")) {
+                                cut += " ";
+                                continue;
+                            }
+                            b = s.getBytes("unicode");
+                            if (b[2] == -1) {
+                                b[3] = (byte) (b[3] + 32);
+                                b[2] = 0;
+                                cut += (new String(b, "unicode"));
+                            } else {
+                                cut += s;
+                            }
+                        }
+                    }
+                    //限定前后页数
+                }else{
+                    for (int page = 0; page < pair.getStart(); page++) {
+                        System.out.println(page);
+                        try {
+                            Rectangle rect = rec.get(page);
+                            stripper.addRegion("head", rect);
+                            stripper.extractRegions(document.getPage(page));
+                        } catch (Exception e) {
+                            System.out.println(file.getName());
+                            break;
+                        }
+                        String temp = stripper.getTextForRegion("head");
+                        byte[] b = null;
+                        for (int c = 0; c < temp.length(); c++) {
+                            String s = temp.substring(c, c + 1);
+                            if (s.equals("　")) {
+                                cut += " ";
+                                continue;
+                            }
+                            b = s.getBytes("unicode");
+                            if (b[2] == -1) {
+                                b[3] = (byte) (b[3] + 32);
+                                b[2] = 0;
+                                cut += (new String(b, "unicode"));
+                            } else {
+                                cut += s;
+                            }
+                        }
+                    }
+                    for (int page = Math.max(pair.getStart(),pageAmount-pair.getEnd());
+                        page < pageAmount; page++) {
+                        System.out.println(page);
+                        try {
+                            Rectangle rect = rec.get(page);
+                            stripper.addRegion("head", rect);
+                            stripper.extractRegions(document.getPage(page));
+                        } catch (Exception e) {
+                            System.out.println(file.getName());
+                            break;
+                        }
+                        String temp = stripper.getTextForRegion("head");
+                        byte[] b = null;
+                        for (int c = 0; c < temp.length(); c++) {
+                            String s = temp.substring(c, c + 1);
+                            if (s.equals("　")) {
+                                cut += " ";
+                                continue;
+                            }
+                            b = s.getBytes("unicode");
+                            if (b[2] == -1) {
+                                b[3] = (byte) (b[3] + 32);
+                                b[2] = 0;
+                                cut += (new String(b, "unicode"));
+                            } else {
+                                cut += s;
+                            }
                         }
                     }
                 }
@@ -83,13 +144,20 @@ public class SimplyToTxt {
 //        }
 //    }
 
-    public static void commonToTxt(File file, String out, List<Rectangle> rectangle) {
+    public static void commonToTxt(File file, String out, List<Rectangle> rectangle, Pair pair) {
         try {
+            if(null==rectangle || rectangle.size()==0){
+                rectangle=new ArrayList<Rectangle>();
+                int pageAmount=PDDocument.load(file).getNumberOfPages();
+                for(int i=0;i<pageAmount;i++){
+                    rectangle.add(new Rectangle(0,0,2000,2000));
+                }
+            }
             //过滤重复pdf文件
             String name=file.getName();
             name=name.substring(0,name.length()-4);
             if(!name.endsWith(")"))
-                toText(file, out, rectangle, 0, Integer.MAX_VALUE);
+                toText(file, out, rectangle,pair);
         } catch (IOException e) {
             e.printStackTrace();
         }

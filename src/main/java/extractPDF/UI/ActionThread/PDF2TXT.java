@@ -1,5 +1,7 @@
 package extractPDF.UI.ActionThread;
 
+import extractPDF.util.Pair;
+
 import javax.swing.*;
 
 import java.io.IOException;
@@ -9,17 +11,18 @@ import static extractPDF.extractOperation.exeFile.readFile;
 public class PDF2TXT implements Runnable {
     private String pdfURL;
     private String txtURL;
-
-    public PDF2TXT(String pdfURL, String txtURL) {
+    private Pair pair;
+    public PDF2TXT(String pdfURL, String txtURL, Pair pair) {
         this.pdfURL = pdfURL;
         this.txtURL = txtURL;
+        this.pair=pair;
     }
 
     @Override
     public void run() {
         long start = System.currentTimeMillis();
         try {
-            readFile(pdfURL, txtURL);
+            readFile(pdfURL, txtURL,pair);
         } catch (IOException e) {
             e.printStackTrace();
         }

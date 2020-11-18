@@ -1,7 +1,9 @@
 <component name="libraryTable">
-  <library name="jxl">
+  <library name="guava-19.01">
     <CLASSES>
+      <root url="jar://$PROJECT_DIR$/guava-19.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/jxl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/pdfbox-app-2.0.17.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -3,6 +3,8 @@ package extractPDF.UI;
 import extractPDF.CSV.WriteCSV;
 import extractPDF.UI.ActionThread.PDF2TXT;
 import extractPDF.openCV.CurrentPDFOperation;
+import extractPDF.util.Pair;
+import extractPDF.util.StringUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 import javax.swing.*;
@@ -233,8 +235,12 @@ public class ShowUI {
                             JOptionPane.showMessageDialog(null, "没有选择路径",
                                     "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
-
-                            PDF2TXT myThread = new PDF2TXT(pdfURL, txtURL);
+                            Pair pair = null;
+                            if (!StringUtils.isBlank(x.getText()) && !StringUtils.isBlank(y.getText())) {
+                                pair = new Pair(Integer.parseInt(x.getText()),
+                                        Integer.parseInt(y.getText()));
+                            }
+                            PDF2TXT myThread = new PDF2TXT(pdfURL, txtURL, pair);
                             Thread thread = new Thread(myThread);
                             thread.start();
 
@@ -247,7 +253,8 @@ public class ShowUI {
                         } else {
                             long start = System.currentTimeMillis();
                             try {
-                                readFile(pdfURL, txtURL);
+                                readFile(pdfURL, txtURL, new Pair(Integer.parseInt(x.getText()),
+                                        Integer.parseInt(y.getText())));
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
